@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "projectId": "<project-id>",
+  "updatedAt": null,
+  "currentPhase": "bootstrap",
+  "status": "not-started",
+  "acceptedBase": null,
+  "candidate": null,
+  "summary": "Replace with evidence-backed current state.",
+  "blockers": [],
+  "nextActions": [],
+  "evidence": []
+}

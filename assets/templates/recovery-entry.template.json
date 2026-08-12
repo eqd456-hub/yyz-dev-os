@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "projectId": "<project-id>",
+  "projectName": "<project-name>",
+  "repository": {
+    "identity": "<repository-identity>",
+    "root": "${PROJECT_ROOT}",
+    "defaultBranch": "<default-branch>"
+  },
+  "globalSkill": "yyz-dev-os",
+  "globalSkillVersion": "1.0.0",
+  "projectBrainRoot": ".aidev",
+  "bindings": {
+    "architecture": ".aidev/architecture.md",
+    "trustedCheckpoint": null,
+    "evidenceIndex": null,
+    "globalCapabilityLedger": null,
+    "projectCapabilityLedger": null
+  },
+  "recoveryOrder": [
+    "global-skill",
+    "git",
+    "operating-rules",
+    "current-state",
+    "roadmap",
+    "decisions",
+    "known-issues",
+    "trusted-checkpoint",
+    "capability-ledger"
+  ],
+  "authorityOrder": [
+    "observed-git-facts",
+    "validated-project-operating-rules",
+    "accepted-project-brain",
+    "verified-execution-review-evidence",
+    "trusted-checkpoint",
+    "verified-capability-ledger",
+    "runtime-memory",
+    "chat-ai-self-report"
+  ],
+  "rules": {
+    "doNotUseChatMemoryAsProjectTruth": true
+  }
+}

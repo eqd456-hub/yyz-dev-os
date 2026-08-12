@@ -1,0 +1,4 @@
+interface:
+  display_name: "YYZ Dev OS"
+  short_description: "跨项目 AI 软件开发、恢复、验证、审查与安全交付操作系统"
+  default_prompt: "Use $yyz-dev-os to bootstrap, recover, or safely execute this software project."
