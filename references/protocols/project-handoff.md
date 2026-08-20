@@ -1,6 +1,6 @@
 # Project Handoff Protocol
 
-Create a durable handoff whenever work pauses, changes agent/model/session, reaches a candidate, or becomes accepted.
+Create a durable handoff when accepted project state changes, a governed Candidate reaches a gate, high-risk work pauses with recovery-critical state, or the user/project explicitly requires it. Do not create a durable handoff for every ordinary edit, pause, model change, or chat transition.
 
 1. Re-observe Git and identify the exact state being handed off.
 2. Separate accepted, proposed, in-progress, blocked, failed, and unverified facts.

@@ -1,6 +1,6 @@
 # Project Recovery Protocol
 
-Run these steps in order before answering project state or beginning work:
+Run these steps when full recovery is triggered by a status/history request, stale or conflicting state, context-loss continuation, high-risk dependency on durable state, or an accepted project gate:
 
 1. Identify the project and repository.
 2. Read and validate `.aidev/recovery-entry.json`.

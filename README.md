@@ -1,14 +1,14 @@
 # YYZ Dev OS
 
-YYZ Dev OS is a global, project-independent AI software development operating system. Version `1.0.0` defines durable rules for project bootstrap and recovery, technical leadership, role routing, verification, Git isolation, memory, storage, approvals, and reporting.
+YYZ Dev OS is an on-demand, project-independent engineering governance Skill. Version `2.0.0` preserves durable recovery, evidence, security, Git, review, and promotion controls while keeping ordinary low-risk development lightweight.
 
 ## Invoke
 
 - Explicitly: `Use $yyz-dev-os to bootstrap this project.`
 - Recover existing work: `Use $yyz-dev-os to recover this project, verify its actual state, and tell me the next step.`
-- Apply to delivery: `Use $yyz-dev-os to implement and verify this change.`
+- Govern a risky delivery: `Use $yyz-dev-os to apply the relevant security, evidence, review, or promotion gates.`
 
-The Skill may also trigger automatically for software-project bootstrap, recovery, implementation, review, repair, release, and related governance work.
+The Skill may trigger automatically when a task involves durable recovery, data/security risk, high-risk Git or deployment, shared core/orchestrator core, major architecture, trusted evidence, independent review, or promotion. Routine bugs, UI work, prompts, and small local features should follow the project's concise `AGENTS.md` without loading full governance.
 
 ## Adopt in a project
 

@@ -29,3 +29,5 @@ Use live observations only for the facts they can actually prove. For example, G
 Never silently merge or overwrite conflicting facts. Record the competing claims, their provenance, scope, freshness, and authority. Prefer the higher-authority fact; if authorities are equal, prefer direct and reproducible evidence, otherwise mark the fact `UNVERIFIED`.
 
 Treat a project-local proposal as proposed state until the project's acceptance process promotes it. Treat generated summaries as views, not independent truth sources.
+
+Reference authoritative engineering files rather than copying stable rules, architecture, or project facts into every prompt. Send only the current requirement delta unless the referenced source is unavailable or disputed.

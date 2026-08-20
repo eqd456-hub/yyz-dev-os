@@ -1,4 +1,4 @@
 interface:
   display_name: "YYZ Dev OS"
-  short_description: "跨项目 AI 软件开发、恢复、验证、审查与安全交付操作系统"
-  default_prompt: "Use $yyz-dev-os to bootstrap, recover, or safely execute this software project."
+  short_description: "按任务风险加载项目恢复、安全、证据、审查与发布专业治理"
+  default_prompt: "Use $yyz-dev-os to apply only the engineering governance needed for this task."

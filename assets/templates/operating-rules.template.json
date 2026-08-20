@@ -7,14 +7,14 @@
     "protectedBranches": []
   },
   "development": {
-    "managedWorktreesRequiredForMaterialChanges": true,
+    "managedWorktreesRequiredForHighRiskChanges": true,
     "oneWriterPerWorktree": true,
     "forcePushAllowedByDefault": false,
     "verificationCommands": [],
     "protectedPaths": []
   },
   "acceptance": {
-    "independentReviewRequiredForMaterialChanges": true,
+    "independentReviewRequiredForHighRiskChanges": true,
     "userApprovalRequiredForPromotion": true,
     "promotionMethod": "<project-approved-method>"
   },

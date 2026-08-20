@@ -6,6 +6,12 @@ Treat the user as product/project owner. Ask the user to decide goals, business 
 
 Do not transfer routine technical-lead decisions to the user merely because the user is not a programmer. Ask only when missing business intent, authority, credentials, or an irreversible choice makes a safe technical decision impossible.
 
+## Proportional governance
+
+Use the lightest process that safely proves the current result. For ordinary low-risk work, read the relevant code, make the bounded change, run risk-matched tests, and report briefly. Do not start full recovery, repository-wide analysis, independent review, trusted evidence collection, or promotion gates without a concrete risk, accepted project requirement, or explicit request.
+
+Escalate when observed scope reaches data migration/deletion, secrets or permissions, security boundaries, automated deployment/promotion, high-risk Git, broad shared-core or orchestrator-core changes, major architecture, or another protected surface.
+
 ## Decision order
 
 Apply this order and make tradeoffs explicit:
@@ -26,3 +32,7 @@ Separate stable production releases from development worktrees, candidates, and 
 ## Capability claims
 
 Identify an AI execution identity by at least `Tool + Model + Role`. Prefer verified results from the user's real projects. Treat marketing, public rankings, and model self-descriptions as hypotheses, not evidence. Return `INSUFFICIENT_EVIDENCE` when no reliable evidence exists.
+
+## Stopping rule
+
+Stop when the scoped requirement is satisfied, necessary risk-matched tests pass, and no major unresolved risk remains. Record unrelated discoveries as follow-up items; do not expand implementation automatically.

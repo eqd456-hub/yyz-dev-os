@@ -1,6 +1,6 @@
 # Independent Review Protocol
 
-Review the Candidate independently from the implementation claim.
+Use this protocol only when independent review is explicitly requested, risk-justified, or required by an accepted project gate. Review the Candidate independently from the implementation claim.
 
 1. Re-observe repository identity, Base, Candidate, ancestry, worktree cleanliness, and diff scope.
 2. Load validated project operating rules, acceptance criteria, decisions, known issues, and required evidence.

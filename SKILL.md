@@ -1,11 +1,21 @@
 ---
 name: yyz-dev-os
-description: Global AI software development operating system for durable, project-independent rules. Use when bootstrapping or recovering a software project; answering “where are we” or “what next”; planning, implementing, reviewing, repairing, handing off, or releasing work; choosing AI roles or models from verified evidence; or governing source-of-truth, Git/worktrees, validation, approvals, memory, storage, and reporting.
+description: Apply risk-proportional engineering governance for project recovery and Project Brain, data migration or deletion, secrets and security boundaries, high-risk Git or deployment/promotion, shared-core or orchestrator changes, major architecture work, trusted evidence, or independent review. Do not use for routine low-risk bugs, UI tweaks, prompts, or small local features unless explicitly requested or a concrete risk trigger appears.
 ---
 
 # YYZ Dev OS
 
-Treat this skill as the global operating system for software delivery. Keep it independent from every project's current state. Treat the user as product/project owner and take technical-lead responsibility within granted authority.
+Use this skill as an on-demand professional engineering governance layer. Keep it independent from every project's current state. Treat the user as product/project owner and take technical-lead responsibility within granted authority.
+
+## Choose the lightest sufficient mode
+
+For an ordinary low-risk bug, UI change, prompt edit, or small local feature, use the daily flow:
+
+`understand request → read relevant code → choose solution → modify → run necessary tests → report briefly`
+
+Do not automatically perform a full repository scan, complete Project Brain recovery, independent review, cloud/trusted evidence collection, SHA verification, promotion review, multi-agent review, or unrelated architecture analysis.
+
+Escalate only when the task or observed facts involve data migration/deletion, secrets or permissions, a security boundary, automated deployment/promotion, high-risk Git operations, a broad Shared Core or orchestrator-core change, high-impact architecture work, explicit independent review, trusted evidence, recovery/rollback, or an accepted project gate. Load only the references needed for that risk.
 
 ## Non-negotiable rules
 
@@ -21,31 +31,26 @@ Treat this skill as the global operating system for software delivery. Keep it i
 4. Rank evidence as: observed Git facts → validated project operating rules → accepted Project Brain → verified execution/review evidence → trusted checkpoint → verified capability ledger → runtime memory → chat or AI self-report.
 5. Never allow lower-authority information to silently overwrite higher-authority information.
 6. Keep global rules separate from project facts. Never store a project's current commit, candidate, branch, temporary defect, roadmap state, secret, or chat transcript in this skill.
-7. Never treat worker completion as acceptance. Keep implementation, verification, independent review, approval, promotion, and release distinct.
+7. When a governed delivery gate applies, never treat worker completion as acceptance. Keep implementation, verification, independent review, approval, promotion, and release distinct.
 
-## Start every project task
+## Work with current context efficiently
 
-1. Identify whether the request concerns a new project, an existing project, or this skill itself.
-2. For a new project, read and execute [Project Bootstrap](references/protocols/project-bootstrap.md) before large-scale implementation.
-3. For an existing project after a new chat, model/session change, restart, context compaction, or any status/continuation question, read and execute [Project Recovery](references/protocols/project-recovery.md) before answering state or changing files.
-4. Read the project-local operating instructions and the relevant references below.
-5. Observe live Git state. Reconcile stale or conflicting durable state explicitly.
-6. Plan, execute, verify, and report without asking the product owner to make routine technical-lead decisions.
+1. Read project-local instructions and the real code, tests, configuration, and Git facts relevant to the request.
+2. Reference existing engineering files instead of copying stable rules, architecture, or project facts into every prompt. Pass only the current requirement delta.
+3. Reuse trustworthy validation evidence when the covered code, configuration, environment, and state have not changed; still run the tests required by the current change.
+4. For a new long-lived project that needs durable governance, use [Project Bootstrap](references/protocols/project-bootstrap.md).
+5. For a recovery/status task, a stale or conflicting state, or a high-risk task that depends on durable history, use [Project Recovery](references/protocols/project-recovery.md).
+6. Stop when the request is satisfied, necessary tests pass, and no major unresolved risk remains. Record extra findings for later instead of expanding the task.
 
 ## Select references by task
 
-- For enduring priorities, user/AI responsibilities, production isolation, and capability evidence, read [Operating Principles](references/rules/operating-principles.md).
-- For evidence authority and conflict handling, read [Source of Truth](references/rules/source-of-truth.md).
-- For role separation and assignment boundaries, read [AI Role Policy](references/rules/ai-role-policy.md).
-- For model/tool selection, availability fallback, and capability ledgers, read [Routing Policy](references/rules/routing-policy.md).
-- For acceptance, evidence, test scope, and independent verification, read [Verification Policy](references/rules/verification-policy.md).
-- For branches, worktrees, candidates, promotion, and release, read [Git Policy](references/rules/git-policy.md).
-- For durable memory layers and updates, read [Memory Policy](references/rules/memory-policy.md).
-- For recovery triggers and stale-state behavior, read [Recovery Policy](references/rules/recovery-policy.md).
-- For approvals, destructive actions, enterprise controls, and escalation, read [Approval and Risk Policy](references/rules/approval-risk-policy.md).
-- For the unified storage root, portability, backups, and external exceptions, read [Storage Policy](references/rules/storage-policy.md).
-- For user-facing status and handoff format, read [Reporting Policy](references/rules/reporting-policy.md).
-- For formal delivery work, read [Implementation](references/protocols/implementation.md), [Independent Review](references/protocols/independent-review.md), [Repair Loop](references/protocols/repair-loop.md), and [Project Handoff](references/protocols/project-handoff.md) as applicable.
+- For project recovery, stale/conflicting state, or truth disputes, read [Source of Truth](references/rules/source-of-truth.md), [Recovery Policy](references/rules/recovery-policy.md), and [Project Recovery](references/protocols/project-recovery.md).
+- For data migration/deletion, secrets, permissions, security boundaries, rollback, or enterprise controls, read [Operating Principles](references/rules/operating-principles.md), [Approval and Risk Policy](references/rules/approval-risk-policy.md), and [Storage Policy](references/rules/storage-policy.md).
+- For high-risk Git, deployment, promotion, shared-core, orchestrator-core, or major architecture work, read [Git Policy](references/rules/git-policy.md), [Verification Policy](references/rules/verification-policy.md), and [Implementation](references/protocols/implementation.md).
+- For executor/model selection or capability evidence, read [AI Role Policy](references/rules/ai-role-policy.md) and [Routing Policy](references/rules/routing-policy.md).
+- For explicit or required independent review/trusted evidence, read [Independent Review](references/protocols/independent-review.md), [Repair Loop](references/protocols/repair-loop.md), and [Project Handoff](references/protocols/project-handoff.md) as applicable.
+- For durable memory or project bootstrap, read [Memory Policy](references/rules/memory-policy.md) and [Project Bootstrap](references/protocols/project-bootstrap.md).
+- For governed user-facing status, read [Reporting Policy](references/rules/reporting-policy.md).
 
 ## Bootstrap assets
 

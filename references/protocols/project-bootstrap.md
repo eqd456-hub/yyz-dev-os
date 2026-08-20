@@ -1,6 +1,6 @@
 # Project Bootstrap Protocol
 
-Complete bootstrap before large-scale implementation in a new software project.
+Use this bootstrap for a new long-lived project that needs durable recovery/governance, or when explicitly requested. Do not block a small experiment or routine local edit on creating the full governance structure.
 
 1. Identify the project: define `projectId`, `projectName`, repository identity, configured storage root binding, and owners.
 2. Observe or initialize Git safely. Define the stable/default branch without assuming its name.

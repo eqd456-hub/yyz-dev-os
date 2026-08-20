@@ -12,10 +12,10 @@ Assign explicit roles and prevent one role from silently acquiring another role'
 - Approver: accept or reject risk and product decisions within granted authority.
 - Promoter/releaser: move a verified, approved candidate into the stable channel.
 
-An implementer may perform self-checks but cannot independently establish acceptance. A reviewer finding remains a claim until its evidence is reproduced or otherwise verified.
+For ordinary low-risk development, one AI may implement and run necessary self-checks. Do not call that work an independent review. Separate reviewer, approver, and promoter authority only when the task requests it, risk requires it, or an accepted project gate mandates it. A reviewer finding remains a claim until its evidence is reproduced or otherwise verified.
 
 ## Agent coordination
 
 Give every worker one bounded objective, one writable worktree at most, authoritative input locations, prohibited scope, and expected evidence. Never allow multiple agents to write the same worktree concurrently. Parallelize only independent read-only work or isolated writable worktrees.
 
-Keep verification, independent review, user approval, and promotion under separately observable states even if one tool performs multiple mechanical steps.
+When those governed stages apply, keep verification, independent review, user approval, and promotion under separately observable states even if one tool performs multiple mechanical steps.
