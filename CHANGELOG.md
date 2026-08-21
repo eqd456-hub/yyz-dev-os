@@ -2,6 +2,16 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.1.0] - 2026-08-21
+
+### Added
+
+- Add a preferred, evidence-adjustable Codex orchestration profile: Sol for primary coordination and difficult review, Luna for narrow discovery, and Terra for bounded implementation and testing.
+
+### Changed
+
+- Require the primary agent to inspect worker evidence, avoid delegation for trivial one-step actions, and preserve one-writer-per-worktree coordination.
+
 ## [2.0.0] - 2026-08-20
 
 ### Changed

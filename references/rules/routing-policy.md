@@ -8,6 +8,20 @@ Never bind a tool name permanently to Core, UI, review, or another role. Choose 
 
 Do not treat public rankings, vendor claims, or an AI's self-assessment as verified capability. If comparable evidence is absent, state `INSUFFICIENT_EVIDENCE`, use a bounded pilot, and measure the result.
 
+## Preferred Codex orchestration profile
+
+The primary agent owns requirement understanding, overall solution and decomposition, worker coordination, result acceptance, and final reporting. Prefer GPT-5.6 Sol with high reasoning for that role.
+
+Delegate only bounded, independent work when doing so materially improves speed, context quality, or cost:
+
+- Prefer GPT-5.6 Luna with low reasoning for narrow search, discovery, extraction, classification, and log triage.
+- Prefer GPT-5.6 Terra with medium or high reasoning for scoped implementation, fixes, and test work.
+- Prefer GPT-5.6 Sol with high or xhigh reasoning for difficult architecture, security work, and independent review.
+
+The primary agent must inspect worker evidence before accepting a result. Do not delegate a trivial one-step action when delegation costs more than performing it directly. Never allow multiple agents to write the same worktree.
+
+These are current preferred profiles, not permanent vendor bindings. Adjust them when verified capability evidence, current availability, or task risk requires a different executor.
+
 ## Capability ledger contract
 
 Support two layers without requiring a complex platform:
