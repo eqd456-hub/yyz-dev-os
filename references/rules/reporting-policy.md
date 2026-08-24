@@ -2,7 +2,7 @@
 
 ## Default daily report
 
-For ordinary code changes, report briefly with:
+For code changes, report briefly with:
 
 - Changes: files changed and why.
 - Architecture: whether the existing structure is affected.

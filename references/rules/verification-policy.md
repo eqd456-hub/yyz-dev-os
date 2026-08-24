@@ -4,7 +4,7 @@
 
 Match verification depth to the change's scope and risk. For ordinary low-risk work, run the targeted tests and static/build checks needed to establish the requested behavior. Use the complete categories below when a high-risk task, protected surface, release gate, or explicit acceptance contract requires them.
 
-After ordinary code changes, self-check for duplicated functionality, broken existing interfaces, architecture-boundary violations, dead or unnecessary code, and whether the change needs new or updated tests.
+After code changes, self-check for duplicated functionality, broken existing interfaces, architecture-boundary violations, dead or unnecessary code, and whether the change needs new or updated tests.
 
 Translate governed work into observable acceptance criteria, required checks, protected invariants, and evidence locations. Distinguish:
 

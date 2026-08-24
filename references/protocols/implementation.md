@@ -14,6 +14,8 @@
 
 When a recovery, security/data, protected Git, deployment/promotion, shared-core/orchestrator-core, major architecture, trusted-evidence, or independent-review trigger applies:
 
+Apply the code-engineering discipline above to any code change, then add only the governance steps required by the trigger:
+
 1. Complete only the recovery needed to establish authoritative inputs and confirm the authorized objective.
 2. Define bounded scope, acceptance criteria, protected invariants, required evidence, and rollback/recovery conditions.
 3. Observe the Base and preserve unrelated user changes.
