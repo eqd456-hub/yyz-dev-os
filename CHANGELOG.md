@@ -2,6 +2,17 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.2.0] - 2026-08-25
+
+### Added
+
+- Add lightweight code-engineering discipline for ordinary implementation: understand relevant code before changes, reuse before expansion, adapt external ideas to the local architecture, and keep module responsibilities clear.
+- Add ordinary code-change self-checks for duplication, interface compatibility, architecture boundaries, dead code, and test needs.
+
+### Changed
+
+- Standardize ordinary code-change reports as Changes, Architecture, Validation, and Risks while preserving governed delivery fields when applicable.
+
 ## [2.1.0] - 2026-08-21
 
 ### Added

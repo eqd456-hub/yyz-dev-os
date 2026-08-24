@@ -2,12 +2,13 @@
 
 ## Ordinary low-risk work
 
-1. Understand the request and read the directly related code, tests, and configuration.
-2. Choose the technical solution, fix the root cause, and keep scope bounded.
-3. Preserve stable unrelated modules and user changes.
-4. Implement the smallest coherent change.
-5. Run tests and checks proportional to the affected behavior and risk.
-6. Stop when the request is satisfied, necessary checks pass, and no major unresolved risk remains. Report what changed, verification, and risk.
+1. Understand the request; read the directly related project structure, implementation, tests, and configuration; confirm the affected surface and reusable capabilities before changing code.
+2. Choose the technical solution, fix the root cause, and keep scope bounded. Prefer, in order: reuse existing capability, extend an existing module, add a bounded independent module, then refactor stable code only when necessary.
+3. When using external, open-source, or example code, extract only the necessary algorithm or solution idea. Do not copy whole files or unrelated dependencies; reimplement it for the current stack, structure, naming, data model, and architecture.
+4. Preserve stable unrelated modules and user changes. Keep responsibilities clear and follow existing layers; do not mix UI, data access, network, and business logic without a justified local design.
+5. Implement the smallest coherent change. Keep new code clearly named, non-duplicative, consistent with the existing style, free of temporary workarounds or unnecessary abstractions, and reasonably extensible.
+6. Run tests and checks proportional to the affected behavior and risk.
+7. Stop when the request is satisfied, necessary checks pass, and no major unresolved risk remains. Report what changed, verification, and risk.
 
 ## Governed work
 

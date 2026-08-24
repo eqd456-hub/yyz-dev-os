@@ -2,11 +2,14 @@
 
 ## Default daily report
 
-For ordinary development, report only:
+For ordinary code changes, report briefly with:
 
-- What changed
-- Verification result
-- Any remaining risk
+- Changes: files changed and why.
+- Architecture: whether the existing structure is affected.
+- Validation: checks run and their result.
+- Risks: remaining potential risks.
+
+If there is no structural impact or known risk, say so briefly.
 
 For governed recovery, review, or promotion work, add stage, exact status, evidence identity, blocker, and next gate only when relevant. Report tool/model/reasoning identity only when required and known; never guess it. Keep low-level commands and logs out of the main report unless they are evidence or the user requests them.
 
