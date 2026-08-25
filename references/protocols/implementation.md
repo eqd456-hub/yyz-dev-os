@@ -2,7 +2,7 @@
 
 ## Professional development lifecycle
 
-Use this lifecycle for non-trivial behavior changes, cross-module work, material ambiguity, or a plan-first request. For a small, clear, low-risk edit, apply the same discipline proportionately without creating ceremony.
+Use this lifecycle for non-trivial behavior changes or cross-module work. A plan-first request requires a product-facing plan and pause, but does not by itself change an implementation's complexity. Material ambiguity requires only the necessary product decision; it does not by itself make a small task non-trivial. For a small, clear, low-risk edit, apply the same discipline proportionately without creating ceremony.
 
 ### Translate the request before coding
 
@@ -15,10 +15,10 @@ Identify the code-level owner of each business rule that changes. Follow the exi
 Apply [Approval and Risk Policy](../rules/approval-risk-policy.md):
 
 - If the user asks to proceed directly and the product behavior is clear, reversible, and in scope, make the technical choices and continue.
-- If the user asks for a plan first, present the product-facing plan and wait before implementation.
+- If the user asks for a plan first, present the product-facing plan and wait before implementation; this alone does not require a technical execution card.
 - If a product boundary is materially ambiguous, or a risk gate applies, ask only for the decision that cannot be established from project facts.
 
-For every non-trivial, plan-first, or cross-module task, create a task-local technical execution card before coding. For plan-first or approval-bound work, create it after the required product decision; for an explicitly direct task that needs no approval, create it after reading the evidence and before implementation. Do not create a card for a small, clear, low-risk task. The card is working context, not an approval artifact or truth source, and stays in the task/session rather than a file unless an existing durable handoff rule applies. Scale it to the work; it can record the evidence read, business-rule owner and call chain, bounded scope, reuse choice, files or abstractions affected, dependencies or migrations, selected approach and material alternatives, tests, rollback conditions, and expected change size. The user owns product outcomes, not routine low-level implementation choices.
+For every non-trivial or cross-module implementation, create a task-local technical execution card before coding. Create it after any required product decision; for an explicitly direct task that needs no approval, create it after reading the evidence and before implementation. Do not create a card for a small, clear, low-risk task, even when the user requested a plan first. The card is working context, not an approval artifact or truth source, and stays in the task/session rather than a file unless an existing durable handoff rule applies. Scale it to the work; it can record the evidence read, business-rule owner and call chain, bounded scope, reuse choice, files or abstractions affected, dependencies or migrations, selected approach and material alternatives, tests, rollback conditions, and expected change size. The user owns product outcomes, not routine low-level implementation choices.
 
 ### Choose the smallest maintainable solution
 

@@ -1,6 +1,6 @@
 ---
 name: yyz-dev-os
-description: Apply proportionate professional development lifecycle and risk governance to non-trivial planning, plan-first requests, Project Brain/durable memory, data, secrets/permissions/security boundaries, high-risk Git/deploy/promotion, shared-core/orchestrator-core, major architecture, rollback, trusted evidence, or independent review. Keep routine small local work lightweight.
+description: Apply proportionate professional development lifecycle and risk governance to non-trivial development work or planning, plan-first requests, Project Brain/durable memory, data migration/deletion, secrets/permissions/security boundaries, high-risk Git/deploy/promotion, shared-core/orchestrator-core, major architecture, rollback, trusted evidence, or independent review. Keep routine small local work lightweight.
 ---
 
 # YYZ Dev OS
@@ -15,7 +15,7 @@ For a small, clear, low-risk bug, UI change, prompt edit, or local feature, use 
 
 Do not automatically perform a full repository scan, complete Project Brain recovery, independent review, cloud/trusted evidence collection, SHA verification, promotion review, multi-agent review, or unrelated architecture analysis.
 
-For a non-trivial behavior change, cross-module feature, materially ambiguous request, or explicit plan-first request, use the [Professional Development Lifecycle](references/protocols/implementation.md): translate the product request, resolve any required product decision, then create a scoped task-local execution card before coding. This is not full delivery governance and does not require a durable Project Brain update.
+For an explicit plan-first request, present the product-facing plan and wait; plan-first alone does not require a technical execution card. For a non-trivial behavior change or cross-module feature, use the [Professional Development Lifecycle](references/protocols/implementation.md): translate the product request, resolve any required product decision, then create a scoped task-local execution card before coding. Material ambiguity requires only the necessary decision and does not independently make a small task non-trivial. This is not full delivery governance and does not require a durable Project Brain update.
 
 Escalate to governed work only when the task or observed facts involve data migration/deletion, secrets or permissions, a security boundary, automated deployment/promotion, high-risk Git operations, a broad Shared Core or orchestrator-core change, high-impact architecture work, explicit independent review, trusted evidence, recovery/rollback, or an accepted project gate. Load only the references needed for that risk.
 
