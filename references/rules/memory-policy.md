@@ -15,7 +15,7 @@ Chat is not a project database. Never use a raw chat transcript as the authorita
 
 Keep prompts incremental. Reference existing operating rules, architecture, Project Brain, checkpoints, and code instead of re-embedding unchanged content on every task. Load only the durable records needed to resolve the current request or risk.
 
-A technical execution card is task/session runtime state: a compact working model for the current implementation, not a Project Brain record, checkpoint, or independent truth source. Do not create or persist one by default. Persist only the narrowest accepted fact that materially improves recovery, following the existing durable handoff rules and evidence requirements.
+A technical execution card is task/session runtime state: a compact working model for each non-trivial, plan-first, or cross-module implementation, not a Project Brain record, checkpoint, or independent truth source. Do not create one for a small, clear, low-risk task. Keep every card in task/session runtime by default; persist no card itself. Only when an existing durable handoff rule applies may the narrowest accepted facts that materially improve recovery be persisted, with its required evidence.
 
 ## Durable updates
 
