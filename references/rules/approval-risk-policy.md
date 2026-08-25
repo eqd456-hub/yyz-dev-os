@@ -4,6 +4,10 @@
 
 Make routine technical decisions without pushing them onto the product owner. Continue with safe, reversible, in-scope actions when facts support a clear choice.
 
+For a clear product request where the user explicitly asks to proceed, continue with the scoped implementation when its behavior is reversible and no existing risk boundary applies. If the user explicitly asks for a plan first, present the plan and wait before coding. If product behavior, compatibility, or non-goals remain materially ambiguous, ask only for that product decision; do not ask the user to choose ordinary technical details.
+
+Approval of a plan authorizes only the described, in-scope implementation. It does not authorize a commit, push, promotion, release, destructive action, external write, purchase, publication, or other separately protected operation.
+
 Request user approval or direction when an action would materially expand authority or create a meaningful irreversible/external risk, including:
 
 - production promotion or release when not already authorized;

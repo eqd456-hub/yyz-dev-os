@@ -1,6 +1,6 @@
 ---
 name: yyz-dev-os
-description: Apply risk-proportional engineering governance for project recovery and Project Brain, data migration or deletion, secrets and security boundaries, high-risk Git or deployment/promotion, shared-core or orchestrator changes, major architecture work, trusted evidence, or independent review. Do not use for routine low-risk bugs, UI tweaks, prompts, or small local features unless explicitly requested or a concrete risk trigger appears.
+description: Apply proportionate professional engineering lifecycle and risk governance to non-trivial development planning, plan-first requests, recovery, data/security risk, high-risk Git or deployment/promotion, major architecture, trusted evidence, or independent review. Keep routine small local work lightweight.
 ---
 
 # YYZ Dev OS
@@ -9,13 +9,15 @@ Use this skill as an on-demand professional engineering governance layer. Keep i
 
 ## Choose the lightest sufficient mode
 
-For an ordinary low-risk bug, UI change, prompt edit, or small local feature, use the daily flow:
+For a small, clear, low-risk bug, UI change, prompt edit, or local feature, use the daily flow:
 
 `understand request → read relevant code → choose solution → modify → run necessary tests → report briefly`
 
 Do not automatically perform a full repository scan, complete Project Brain recovery, independent review, cloud/trusted evidence collection, SHA verification, promotion review, multi-agent review, or unrelated architecture analysis.
 
-Escalate only when the task or observed facts involve data migration/deletion, secrets or permissions, a security boundary, automated deployment/promotion, high-risk Git operations, a broad Shared Core or orchestrator-core change, high-impact architecture work, explicit independent review, trusted evidence, recovery/rollback, or an accepted project gate. Load only the references needed for that risk.
+For a non-trivial behavior change, cross-module feature, materially ambiguous request, or explicit plan-first request, use the [Professional Development Lifecycle](references/protocols/implementation.md): translate the product request, form a scoped task-local execution card, and choose whether to proceed or ask only for the necessary product decision. This is not full delivery governance and does not require a durable Project Brain update.
+
+Escalate to governed work only when the task or observed facts involve data migration/deletion, secrets or permissions, a security boundary, automated deployment/promotion, high-risk Git operations, a broad Shared Core or orchestrator-core change, high-impact architecture work, explicit independent review, trusted evidence, recovery/rollback, or an accepted project gate. Load only the references needed for that risk.
 
 ## Non-negotiable rules
 
@@ -35,7 +37,7 @@ Escalate only when the task or observed facts involve data migration/deletion, s
 
 ## Work with current context efficiently
 
-1. Read project-local instructions and the real code, tests, configuration, and Git facts relevant to the request.
+1. Read project-local instructions and the real code, tests, configuration, and Git facts relevant to the request; expand the reading set only when the task evidence requires it.
 2. Reference existing engineering files instead of copying stable rules, architecture, or project facts into every prompt. Pass only the current requirement delta.
 3. Reuse trustworthy validation evidence when the covered code, configuration, environment, and state have not changed; still run the tests required by the current change.
 4. For a new long-lived project that needs durable governance, use [Project Bootstrap](references/protocols/project-bootstrap.md).
@@ -44,6 +46,7 @@ Escalate only when the task or observed facts involve data migration/deletion, s
 
 ## Select references by task
 
+- For a non-trivial development request, plan-first request, or behavior ambiguity, read [Implementation](references/protocols/implementation.md), [Approval and Risk Policy](references/rules/approval-risk-policy.md), [Verification Policy](references/rules/verification-policy.md), and [Reporting Policy](references/rules/reporting-policy.md). Read [Source of Truth](references/rules/source-of-truth.md) or [Memory Policy](references/rules/memory-policy.md) only when their boundary is relevant.
 - For project recovery, stale/conflicting state, or truth disputes, read [Source of Truth](references/rules/source-of-truth.md), [Recovery Policy](references/rules/recovery-policy.md), and [Project Recovery](references/protocols/project-recovery.md).
 - For data migration/deletion, secrets, permissions, security boundaries, rollback, or enterprise controls, read [Operating Principles](references/rules/operating-principles.md), [Approval and Risk Policy](references/rules/approval-risk-policy.md), and [Storage Policy](references/rules/storage-policy.md).
 - For high-risk Git, deployment, promotion, shared-core, orchestrator-core, or major architecture work, read [Git Policy](references/rules/git-policy.md), [Verification Policy](references/rules/verification-policy.md), and [Implementation](references/protocols/implementation.md).
@@ -63,7 +66,7 @@ Copy each `assets/templates/<name>.template.json` to a project's `.aidev/<name>.
 3. Change the narrowest relevant file and check recovery-contract compatibility.
 4. Bump `VERSION` using Semantic Versioning and update `CHANGELOG.md`.
 5. Run `scripts/validate_skill.py` and the installed skill loader's validator.
-6. Review the diff independently, commit to this skill's independent repository, and push only to the configured private remote.
+6. Review the diff independently and commit to this skill's independent repository. Push only with separate authorization and an already configured private remote.
 7. For a breaking major version, require explicit project migration, metadata update, and validation before adoption. Never silently upgrade project contracts.
 
 If evidence is insufficient, report `INSUFFICIENT_EVIDENCE`; do not invent capability scores, completion claims, or project state.

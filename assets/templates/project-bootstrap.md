@@ -5,7 +5,7 @@
 - Repository identity: `<repository-identity>`
 - Project Brain root: `.aidev`
 - Global Skill: `yyz-dev-os`
-- Loaded compatible Skill version: `2.2.0`
+- Loaded compatible Skill version: `2.3.0`
 - Configured storage root resolver: `<resolver>`
 
 ## Checklist

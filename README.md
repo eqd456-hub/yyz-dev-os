@@ -1,14 +1,15 @@
 # YYZ Dev OS
 
-YYZ Dev OS is an on-demand, project-independent engineering governance Skill. Version `2.0.0` preserves durable recovery, evidence, security, Git, review, and promotion controls while keeping ordinary low-risk development lightweight.
+YYZ Dev OS is an on-demand, project-independent professional development and engineering-governance Skill. Its current version is recorded in [`VERSION`](VERSION). It keeps ordinary small development lightweight while preserving durable recovery, evidence, security, Git, review, and promotion controls for work that needs them.
 
 ## Invoke
 
 - Explicitly: `Use $yyz-dev-os to bootstrap this project.`
+- Plan or implement a feature: `Use $yyz-dev-os to turn this request into a scoped development plan and implement it when authorized.`
 - Recover existing work: `Use $yyz-dev-os to recover this project, verify its actual state, and tell me the next step.`
 - Govern a risky delivery: `Use $yyz-dev-os to apply the relevant security, evidence, review, or promotion gates.`
 
-The Skill may trigger automatically when a task involves durable recovery, data/security risk, high-risk Git or deployment, shared core/orchestrator core, major architecture, trusted evidence, independent review, or promotion. Routine bugs, UI work, prompts, and small local features should follow the project's concise `AGENTS.md` without loading full governance.
+The Skill may trigger automatically for non-trivial features, cross-module behavior changes, plan-first requests, durable recovery, data/security risk, high-risk Git or deployment, shared core/orchestrator core, major architecture, trusted evidence, independent review, or promotion. Routine clear bugs, UI work, prompts, and small local features remain lightweight: read the relevant code, make the bounded change, run necessary checks, and report briefly without loading full governance.
 
 ## Adopt in a project
 
@@ -16,6 +17,6 @@ Copy the JSON templates from `assets/templates/` into `<project>/.aidev/`, repla
 
 ## Validate and upgrade
 
-Run `scripts/validate_skill.py`, then the installed Skill loader validator. Apply PATCH and backward-compatible MINOR releases only after project compatibility validation. Require explicit migration for every MAJOR release. Update `VERSION` and `CHANGELOG.md` together; commit and back up only through the Skill's independent private repository.
+Run `scripts/validate_skill.py`, then the installed Skill loader validator. Apply PATCH and backward-compatible MINOR releases only after project compatibility validation. Require explicit migration for every MAJOR release. Update `VERSION` and `CHANGELOG.md` together; commit through the Skill's independent repository, and push only with separate authorization to an already configured private remote.
 
 All paths in the package are relative or configurable. Project-specific state belongs in Project Brain, never here.

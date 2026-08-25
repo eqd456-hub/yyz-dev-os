@@ -24,6 +24,10 @@ Use live observations only for the facts they can actually prove. For example, G
 - A reviewer report is not automatically a verified finding.
 - A model rating is not verified performance.
 
+## Code-level business-rule ownership
+
+The authority order above resolves project facts; it does not create a second source of truth for application behavior. For a changed business rule, identify its existing code-level owner and keep that implementation, its call chain, and its tests authoritative. Do not duplicate the rule in a parallel handler, UI branch, service, or configuration without an explicit design decision supported by higher-authority project facts.
+
 ## Conflict handling
 
 Never silently merge or overwrite conflicting facts. Record the competing claims, their provenance, scope, freshness, and authority. Prefer the higher-authority fact; if authorities are equal, prefer direct and reproducible evidence, otherwise mark the fact `UNVERIFIED`.

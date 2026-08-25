@@ -2,6 +2,18 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.3.0] - 2026-08-25
+
+### Added
+
+- Add a proportionate professional development lifecycle for non-trivial and plan-first work: translate plain-language goals, locate rule ownership and call chains, use a task-local execution card, and choose the smallest maintainable solution.
+- Add external-material and dependency hygiene, including official-source preference, license/security/necessity checks, and protection against instruction injection.
+
+### Changed
+
+- Clarify direct execution, plan-first, and product-ambiguity boundaries without weakening existing fail-closed approvals; plan approval does not authorize protected external or delivery operations.
+- Separate ordinary risk-matched local verification and author self-review from governed Trusted Evidence and Independent Review, while keeping the concise four-part report product-effect first.
+
 ## [2.2.0] - 2026-08-25
 
 ### Added

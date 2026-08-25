@@ -8,7 +8,7 @@
     "defaultBranch": "<default-branch>"
   },
   "globalSkill": "yyz-dev-os",
-  "globalSkillVersion": "2.2.0",
+  "globalSkillVersion": "2.3.0",
   "projectBrainRoot": ".aidev",
   "bindings": {
     "architecture": ".aidev/architecture.md",
