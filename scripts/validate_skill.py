@@ -9,6 +9,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from validate_behavior_cases import validate_suite
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SELF = Path(__file__).resolve()
@@ -32,6 +34,7 @@ REQUIRED_FILES = [
     "references/rules/approval-risk-policy.md",
     "references/rules/storage-policy.md",
     "references/rules/reporting-policy.md",
+    "references/rules/self-audit-policy.md",
     "references/protocols/project-bootstrap.md",
     "references/protocols/project-recovery.md",
     "references/protocols/implementation.md",
@@ -46,6 +49,9 @@ REQUIRED_FILES = [
     "assets/templates/operating-rules.template.json",
     "assets/templates/project-bootstrap.md",
     "assets/schemas/recovery-entry.schema.json",
+    "tests/behavior-cases.json",
+    "tests/test_validate_behavior_cases.py",
+    "scripts/validate_behavior_cases.py",
     "scripts/validate_skill.py",
 ]
 
@@ -241,6 +247,9 @@ def main() -> int:
         failures.append("Recovery schema must declare JSON Schema draft 2020-12")
     validate_recovery_contract(failures)
 
+    behavior_failures, behavior_counts = validate_suite()
+    failures.extend(behavior_failures)
+
     yaml_text = (ROOT / "agents/openai.yaml").read_text(encoding="utf-8")
     if "$yyz-dev-os" not in yaml_text:
         failures.append("agents/openai.yaml default_prompt must mention $yyz-dev-os")
@@ -257,6 +266,7 @@ def main() -> int:
     print("- JSON templates and schema: parseable")
     print("- recovery truth rule: enforced")
     print("- global/project scope: separated")
+    print(f"- behavior routing contracts: {sum(behavior_counts.values())} cases")
     print("- machine paths, live project markers, and secret-like values: none found")
     return 0
 

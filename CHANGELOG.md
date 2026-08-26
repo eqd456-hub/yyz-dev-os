@@ -2,6 +2,20 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.4.0] - 2026-08-25
+
+### Added
+
+- Add a compact behavior-routing contract suite covering daily, plan-first, professional, and governed work, including protected approval and forbidden-default-action expectations.
+- Add a deterministic validator for the behavior contracts and optional externally captured Codex results without loading test cases into normal task context.
+- Add a quiet task-level self-audit that checks routing, evidence, decision ownership, validation, scope, context proportionality, and stopping without burdening the user.
+- Add an on-demand self-audit policy for anomaly classification and evidence-based Skill improvement.
+
+### Changed
+
+- Include behavior-contract integrity and reference existence in the package validator while leaving automatic invocation boundaries unchanged.
+- Keep passing self-audits silent and non-durable; preserve deterministic verification, protected approval, Independent Review, and Trusted Evidence as separate controls.
+
 ## [2.3.0] - 2026-08-25
 
 ### Added

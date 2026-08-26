@@ -43,6 +43,7 @@ Escalate to governed work only when the task or observed facts involve data migr
 4. For a new long-lived project that needs durable governance, use [Project Bootstrap](references/protocols/project-bootstrap.md).
 5. For a recovery/status task, a stale or conflicting state, or a high-risk task that depends on durable history, use [Project Recovery](references/protocols/project-recovery.md).
 6. Stop when the request is satisfied, necessary tests pass, and no major unresolved risk remains. Record extra findings for later instead of expanding the task.
+7. Before reporting, quietly self-audit mode selection, evidence read, decision ownership, required validation, scope, context proportionality, and the stopping condition. If they pass, say nothing and persist nothing; correct anomalies or report only material unresolved ones. This self-audit is neither Independent Review nor Trusted Evidence.
 
 ## Select references by task
 
@@ -53,6 +54,7 @@ Escalate to governed work only when the task or observed facts involve data migr
 - For executor/model selection or capability evidence, read [AI Role Policy](references/rules/ai-role-policy.md) and [Routing Policy](references/rules/routing-policy.md).
 - For explicit or required independent review/trusted evidence, read [Independent Review](references/protocols/independent-review.md), [Repair Loop](references/protocols/repair-loop.md), and [Project Handoff](references/protocols/project-handoff.md) as applicable.
 - For durable memory or project bootstrap, read [Memory Policy](references/rules/memory-policy.md) and [Project Bootstrap](references/protocols/project-bootstrap.md).
+- For explicit Skill evaluation, a detected process anomaly, or evidence-backed recurring behavior, read [Self-Audit Policy](references/rules/self-audit-policy.md).
 - For governed user-facing status, read [Reporting Policy](references/rules/reporting-policy.md).
 
 ## Bootstrap assets
