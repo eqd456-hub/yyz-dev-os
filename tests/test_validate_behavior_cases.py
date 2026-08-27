@@ -42,7 +42,9 @@ class ObservedResultsValidationTests(unittest.TestCase):
                         "loadedReferences": (
                             expected["requiredReferences"] if valid_lists else "invalid"
                         ),
-                        "performedActions": [] if valid_lists else "invalid",
+                        "performedActions": (
+                            expected.get("requiredActions", []) if valid_lists else "invalid"
+                        ),
                     },
                 }
             )
@@ -75,6 +77,19 @@ class ObservedResultsValidationTests(unittest.TestCase):
         )
         self.assertTrue(
             any("performedActions must be a string list" in failure for failure in failures)
+        )
+
+    def test_missing_required_action_fails(self) -> None:
+        results = self.results()
+        routed = next(
+            item
+            for item in results["results"]
+            if item["id"] == "routing-scoped-implementation"
+        )
+        routed["observed"]["performedActions"] = []
+        failures = self.validate(results)
+        self.assertTrue(
+            any("missing required actions" in failure for failure in failures)
         )
 
 

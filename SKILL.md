@@ -39,11 +39,12 @@ Escalate to governed work only when the task or observed facts involve data migr
 
 1. Read project-local instructions and the real code, tests, configuration, and Git facts relevant to the request; expand the reading set only when the task evidence requires it.
 2. Reference existing engineering files instead of copying stable rules, architecture, or project facts into every prompt. Pass only the current requirement delta.
-3. Reuse trustworthy validation evidence when the covered code, configuration, environment, and state have not changed; still run the tests required by the current change.
-4. For a new long-lived project that needs durable governance, use [Project Bootstrap](references/protocols/project-bootstrap.md).
-5. For a recovery/status task, a stale or conflicting state, or a high-risk task that depends on durable history, use [Project Recovery](references/protocols/project-recovery.md).
-6. Stop when the request is satisfied, necessary tests pass, and no major unresolved risk remains. Record extra findings for later instead of expanding the task.
-7. Before reporting, quietly self-audit mode selection, evidence read, decision ownership, required validation, scope, context proportionality, and the stopping condition. If they pass, say nothing and persist nothing; correct anomalies or report only material unresolved ones. This self-audit is neither Independent Review nor Trusted Evidence.
+3. Optimize total workflow context rather than shifting usage between models. Add a worker or advisor only when the expected reduction in rereading or rework exceeds coordination overhead.
+4. Reuse trustworthy validation evidence when the covered code, configuration, environment, and state have not changed; still run the tests required by the current change.
+5. For a new long-lived project that needs durable governance, use [Project Bootstrap](references/protocols/project-bootstrap.md).
+6. For a recovery/status task, a stale or conflicting state, or a high-risk task that depends on durable history, use [Project Recovery](references/protocols/project-recovery.md).
+7. Stop when the request is satisfied, necessary tests pass, and no major unresolved risk remains. Record extra findings for later instead of expanding the task.
+8. Before reporting, quietly self-audit mode selection, evidence read, decision ownership, required validation, scope, context proportionality, and the stopping condition. If they pass, say nothing and persist nothing; correct anomalies or report only material unresolved ones. This self-audit is neither Independent Review nor Trusted Evidence.
 
 ## Select references by task
 
@@ -51,7 +52,7 @@ Escalate to governed work only when the task or observed facts involve data migr
 - For project recovery, stale/conflicting state, or truth disputes, read [Source of Truth](references/rules/source-of-truth.md), [Recovery Policy](references/rules/recovery-policy.md), and [Project Recovery](references/protocols/project-recovery.md).
 - For data migration/deletion, secrets, permissions, security boundaries, rollback, or enterprise controls, read [Operating Principles](references/rules/operating-principles.md), [Approval and Risk Policy](references/rules/approval-risk-policy.md), and [Storage Policy](references/rules/storage-policy.md).
 - For high-risk Git, deployment, promotion, shared-core, orchestrator-core, or major architecture work, read [Git Policy](references/rules/git-policy.md), [Verification Policy](references/rules/verification-policy.md), and [Implementation](references/protocols/implementation.md).
-- For executor/model selection or capability evidence, read [AI Role Policy](references/rules/ai-role-policy.md) and [Routing Policy](references/rules/routing-policy.md).
+- For executor/model selection, capability evidence, or a task with clearly separable worker stages, read [AI Role Policy](references/rules/ai-role-policy.md) and [Routing Policy](references/rules/routing-policy.md).
 - For explicit or required independent review/trusted evidence, read [Independent Review](references/protocols/independent-review.md), [Repair Loop](references/protocols/repair-loop.md), and [Project Handoff](references/protocols/project-handoff.md) as applicable.
 - For durable memory or project bootstrap, read [Memory Policy](references/rules/memory-policy.md) and [Project Bootstrap](references/protocols/project-bootstrap.md).
 - For explicit Skill evaluation, a detected process anomaly, or evidence-backed recurring behavior, read [Self-Audit Policy](references/rules/self-audit-policy.md).

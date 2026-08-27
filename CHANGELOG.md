@@ -2,6 +2,22 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.5.0] - 2026-08-27
+
+### Added
+
+- Add observable model-routing evidence for delegated work and for clearly eligible stages that remain direct.
+- Add behavior contracts for Luna search delegation, Terra implementation delegation, and intentional direct execution of trivial work.
+- Add an optional, one-consultation ChatGPT planning-advisor route for complex decisions where a compact sanitized brief may prevent material rework.
+- Add behavior contracts for advisor use, unavailable-advisor fallback, and ordinary-task exclusion.
+
+### Changed
+
+- Make delegation the default for bounded independent stages when it materially improves speed, context quality, or cost, while preserving explicit exceptions and capability-based routing.
+- Require explicit model or role selection when the orchestration interface supports it instead of assuming an unlabeled worker uses the preferred profile.
+- Optimize total workflow tokens rather than shifting usage between models; keep one complete-plan owner and use delta-only, evidence-bearing handoffs.
+- Keep the planning advisor non-authoritative, non-blocking, secret-free, and unclaimed as a token saving until measured by a bounded pilot.
+
 ## [2.4.0] - 2026-08-25
 
 ### Added
