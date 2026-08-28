@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "projectId": "<project-id>",
+  "updatedAt": null,
+  "repository": {
+    "defaultBranch": "<default-branch>",
+    "protectedBranches": []
+  },
+  "development": {
+    "managedWorktreesRequiredForHighRiskChanges": true,
+    "oneWriterPerWorktree": true,
+    "forcePushAllowedByDefault": false,
+    "verificationCommands": [],
+    "protectedPaths": []
+  },
+  "acceptance": {
+    "independentReviewRequiredForHighRiskChanges": true,
+    "userApprovalRequiredForPromotion": true,
+    "promotionMethod": "<project-approved-method>"
+  },
+  "memory": {
+    "doNotUseChatMemoryAsProjectTruth": true
+  },
+  "storage": {
+    "rootResolver": "<configured-storage-root-resolver>",
+    "externalExceptions": []
+  }
+}

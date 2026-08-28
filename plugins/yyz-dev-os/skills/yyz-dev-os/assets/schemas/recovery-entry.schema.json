@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YYZ Dev OS Recovery Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "projectName",
+    "repository",
+    "globalSkill",
+    "globalSkillVersion",
+    "projectBrainRoot",
+    "bindings",
+    "recoveryOrder",
+    "authorityOrder",
+    "rules"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "root",
+        "defaultBranch"
+      ],
+      "properties": {
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "defaultBranch": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "globalSkill": {
+      "const": "yyz-dev-os"
+    },
+    "globalSkillVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "projectBrainRoot": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:[\\\\/])(?!/)(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$)).+$"
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "architecture",
+        "trustedCheckpoint",
+        "evidenceIndex",
+        "globalCapabilityLedger",
+        "projectCapabilityLedger"
+      ],
+      "properties": {
+        "architecture": {
+          "$ref": "#/$defs/optionalRelativePath"
+        },
+        "trustedCheckpoint": {
+          "$ref": "#/$defs/optionalRelativePath"
+        },
+        "evidenceIndex": {
+          "$ref": "#/$defs/optionalRelativePath"
+        },
+        "globalCapabilityLedger": {
+          "$ref": "#/$defs/optionalRelativePath"
+        },
+        "projectCapabilityLedger": {
+          "$ref": "#/$defs/optionalRelativePath"
+        }
+      }
+    },
+    "recoveryOrder": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authorityOrder": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doNotUseChatMemoryAsProjectTruth"
+      ],
+      "properties": {
+        "doNotUseChatMemoryAsProjectTruth": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "optionalRelativePath": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:[\\\\/])(?!/)(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$)).+$"
+    }
+  }
+}

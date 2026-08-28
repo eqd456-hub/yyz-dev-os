@@ -1,0 +1,29 @@
+{
+  "name": "yyz-dev-os",
+  "version": "2.6.1",
+  "description": "Proportionate engineering lifecycle and governance for Codex projects.",
+  "author": {
+    "name": "eqd456-hub",
+    "url": "https://github.com/eqd456-hub"
+  },
+  "homepage": "https://github.com/eqd456-hub/yyz-dev-os",
+  "repository": "https://github.com/eqd456-hub/yyz-dev-os",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "YYZ Dev OS",
+    "shortDescription": "Proportionate engineering governance for Codex projects.",
+    "longDescription": "Plan, implement, recover, and review software changes with proportionate evidence and safeguards.",
+    "developerName": "eqd456-hub",
+    "category": "Productivity",
+    "capabilities": [
+      "Engineering planning",
+      "Implementation governance",
+      "Recovery and review"
+    ],
+    "defaultPrompt": [
+      "Plan and implement this feature with proportionate checks.",
+      "Recover this project from durable evidence and Git facts.",
+      "Review this change for risk and verification gaps."
+    ]
+  }
+}
