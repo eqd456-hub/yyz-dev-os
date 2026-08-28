@@ -2,6 +2,20 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.6.0] - 2026-08-28
+
+### Added
+
+- Add an on-demand code-health audit protocol with incremental and evidence-triggered full-audit modes.
+- Add Context Handoff lifecycle guidance so a replacement technical lead can recover from durable project evidence rather than chat history.
+- Add an on-demand website-development lifecycle that starts with product and user-flow clarity, establishes one vertical slice, and keeps release checks proportionate.
+
+### Changed
+
+- Keep routine changes limited to incremental health checks; require explicit request or observed maintenance evidence before a broad audit.
+- Require health reports to state scope, evidence coverage, confidence, and evidence-backed priorities rather than fabricated precise scores.
+- Make recovery and handoff use the project's declared recovery entry and Project Brain bindings, while preserving accepted decision, evidence, release, and rollback history.
+
 ## [2.5.0] - 2026-08-27
 
 ### Added

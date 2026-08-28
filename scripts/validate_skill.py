@@ -37,6 +37,8 @@ REQUIRED_FILES = [
     "references/rules/self-audit-policy.md",
     "references/protocols/project-bootstrap.md",
     "references/protocols/project-recovery.md",
+    "references/protocols/code-health-audit.md",
+    "references/protocols/website-development.md",
     "references/protocols/implementation.md",
     "references/protocols/independent-review.md",
     "references/protocols/repair-loop.md",
@@ -188,6 +190,20 @@ def validate_recovery_contract(failures: list[str]) -> None:
         failures.append("Recovery template must declare all architecture, checkpoint, evidence, and ledger bindings")
 
 
+def validate_project_bootstrap_version(version: str, failures: list[str]) -> None:
+    path = ROOT / "assets/templates/project-bootstrap.md"
+    text = path.read_text(encoding="utf-8")
+    matches = re.findall(
+        r"^- Loaded compatible Skill version:\s+`([^`]+)`\s*$",
+        text,
+        flags=re.MULTILINE,
+    )
+    if len(matches) != 1:
+        failures.append("Project bootstrap template must declare exactly one Loaded compatible Skill version")
+    elif matches[0] != version:
+        failures.append("Project bootstrap template version does not match VERSION")
+
+
 def main() -> int:
     failures: list[str] = []
 
@@ -246,6 +262,7 @@ def main() -> int:
     if isinstance(schema, dict) and schema.get("$schema") != "https://json-schema.org/draft/2020-12/schema":
         failures.append("Recovery schema must declare JSON Schema draft 2020-12")
     validate_recovery_contract(failures)
+    validate_project_bootstrap_version(version, failures)
 
     behavior_failures, behavior_counts = validate_suite()
     failures.extend(behavior_failures)

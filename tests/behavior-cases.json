@@ -52,6 +52,61 @@
       }
     },
     {
+      "id": "daily-incremental-code-health",
+      "prompt": "修复订单卡片日期为空时的显示问题，并检查本次改动会不会影响直接调用方。",
+      "expected": {
+        "mode": "daily",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [],
+        "requiredActions": [
+          "perform-incremental-code-health-check"
+        ],
+        "forbiddenDefaultActions": [
+          "load-full-code-health-audit",
+          "full-repository-scan",
+          "automatic-refactor-from-health-check"
+        ]
+      }
+    },
+    {
+      "id": "daily-website-ui-tweak",
+      "prompt": "网站的个人资料页只需把保存按钮文字改为‘提交’，保持现有行为并跑相关检查。",
+      "expected": {
+        "mode": "daily",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [],
+        "forbiddenDefaultActions": [
+          "load-full-website-development-lifecycle",
+          "rebuild-website-skeleton",
+          "create-duplicate-prd"
+        ]
+      }
+    },
+    {
+      "id": "explicit-full-code-health-audit",
+      "prompt": "对任务处理子系统做一次完整代码健康体检，只报告证据、风险和建议，不要修改任何代码。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/code-health-audit.md"
+        ],
+        "requiredActions": [
+          "scope-evidence-backed-code-health-audit",
+          "report-coverage-and-confidence",
+          "separate-audit-from-repair"
+        ],
+        "forbiddenDefaultActions": [
+          "repair-without-separate-authorization",
+          "fabricate-precise-health-score",
+          "automatic-stack-change"
+        ]
+      }
+    },
+    {
       "id": "plan-first-small",
       "prompt": "先给我方案，不要修改代码：给列表页增加一个本地排序开关。",
       "expected": {
@@ -105,6 +160,32 @@
         "forbiddenDefaultActions": [
           "full-project-recovery",
           "promotion-review"
+        ]
+      }
+    },
+    {
+      "id": "professional-new-long-lived-website",
+      "prompt": "直接开始建设一个长期维护的预约服务网站：先明确当前阶段的用户、核心预约流程和验收，再打通可用的预约端到端链路。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/rules/approval-risk-policy.md",
+          "references/rules/verification-policy.md",
+          "references/rules/reporting-policy.md",
+          "references/protocols/website-development.md"
+        ],
+        "requiredActions": [
+          "establish-product-phase-boundaries",
+          "plan-website-vertical-slice-before-broad-feature-work",
+          "keep-business-rule-single-owner"
+        ],
+        "forbiddenDefaultActions": [
+          "delegate-routine-technical-choice-to-user",
+          "build-all-website-modules-before-vertical-slice",
+          "create-duplicate-prd-by-default"
         ]
       }
     },
@@ -230,6 +311,48 @@
         "forbiddenDefaultActions": [
           "use-chat-as-project-truth",
           "implement-before-recovery"
+        ]
+      }
+    },
+    {
+      "id": "governed-context-handoff",
+      "prompt": "这个长期项目刚完成一个已验收的大功能，将交给新的主负责人继续。请做 Context Handoff，保证接替者不读取旧聊天也能恢复。",
+      "expected": {
+        "mode": "governed",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/rules/source-of-truth.md",
+          "references/rules/memory-policy.md",
+          "references/rules/recovery-policy.md",
+          "references/protocols/project-handoff.md",
+          "references/protocols/project-recovery.md"
+        ],
+        "requiredActions": [
+          "read-recovery-entry-and-declared-bindings",
+          "reobserve-git-before-handoff",
+          "update-narrow-supported-durable-state",
+          "validate-replacement-recovery-without-chat"
+        ],
+        "forbiddenDefaultActions": [
+          "create-fixed-parallel-project-brain-files",
+          "delete-accepted-decision-or-evidence-history",
+          "use-chat-as-project-truth"
+        ]
+      }
+    },
+    {
+      "id": "daily-new-chat-no-context-handoff",
+      "prompt": "这是一个刚打开的新聊天：只把登录页的一句提示文案改准确。",
+      "expected": {
+        "mode": "daily",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [],
+        "forbiddenDefaultActions": [
+          "full-project-recovery",
+          "create-durable-context-handoff",
+          "write-project-memory-for-chat-transition"
         ]
       }
     },
