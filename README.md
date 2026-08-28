@@ -17,13 +17,13 @@ Copy the JSON templates from `assets/templates/` into `<project>/.aidev/`, repla
 
 ## Validate and upgrade
 
-Run `scripts/validate_skill.py`, then the installed Skill loader validator. Apply PATCH and backward-compatible MINOR releases only after project compatibility validation. Require explicit migration for every MAJOR release. Update `VERSION` and `CHANGELOG.md` together; commit through the Skill's independent repository, and push only with separate authorization to an already configured private remote.
+Run `scripts/validate_skill.py`, then the installed Skill loader validator. Apply PATCH and backward-compatible MINOR releases only after project compatibility validation. Require explicit migration for every MAJOR release. Update `VERSION` and `CHANGELOG.md` together; commit through the Skill's independent repository, and push only with separate authorization after confirming the configured remote and intended visibility.
 
 All paths in the package are relative or configurable. Project-specific state belongs in Project Brain, never here.
 
-## Private team plugin
+## GitHub plugin installation
 
-Team members need access to this private GitHub repository and Git authentication that can read it. Install the team marketplace and plugin with:
+Until the public-directory listing is approved, install the marketplace and plugin from the public GitHub repository with:
 
 ```powershell
 codex plugin marketplace add eqd456-hub/yyz-dev-os --ref main
@@ -41,7 +41,7 @@ Start a new Codex task after installation or update so it can discover the updat
 
 ## Public directory candidate
 
-This package has user authorization for public release and is ready for Portal submission, but it has not been submitted or approved. Until approval and public distribution are completed, installation remains the private-team flow above and still requires repository access.
+This package has user authorization for public release and is ready for Portal submission, but it has not been submitted or approved. Until directory approval is completed, installation uses the public GitHub flow above.
 
 The candidate is Skills-only: it includes no MCP server, hosted service, API key, or plugin-managed data collection. The maintenance repository keeps public-listing, privacy, terms, support, and review materials in `submission/` and `docs/`; those publication files are intentionally excluded from the runtime Skill snapshot. The red-and-black plugin logo and composer icon are packaged. The public site is expected at `https://eqd456-hub.github.io/yyz-dev-os/`, with support through the issue tracker and Pages privacy/terms URLs. The verified individual publisher is `杨元钊`, while the developer display name is `YYZ`; check the Portal preview for public identity visibility before submission. After approval and public availability, colleagues can install from the public directory without GitHub or private-cloud access.
 
