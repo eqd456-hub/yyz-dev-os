@@ -2,6 +2,18 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.6.2] - 2026-08-28
+
+### Added
+
+- Add public-directory candidate materials, review scenarios, and disclosure drafts for a Skills-only plugin submission.
+
+### Changed
+
+- Clarify public plugin copy for new and existing projects, routine lightweight development, and risk-triggered governance.
+- Use the personal publisher identity `杨元钊`, the requested public display name `YYZ`, and a red-and-black transparent plugin mark in the public candidate; require Portal preview confirmation for identity visibility.
+- Record user authorization for publication and prepare the expected public Pages, support, privacy, and terms URLs without claiming Portal submission or approval.
+
 ## [2.6.1] - 2026-08-28
 
 ### Added

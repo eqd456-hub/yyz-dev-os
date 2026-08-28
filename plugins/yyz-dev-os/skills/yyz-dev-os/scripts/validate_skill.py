@@ -27,6 +27,7 @@ REQUIRED_FILES = [
     "VERSION",
     "CHANGELOG.md",
     "README.md",
+    "LICENSE",
     ".gitignore",
     ".gitattributes",
     "agents/openai.yaml",
@@ -67,8 +68,16 @@ if not IS_PLUGIN_SNAPSHOT:
     REQUIRED_FILES.extend(
         [
             ".agents/plugins/marketplace.json",
+            "docs/index.md",
+            "docs/_config.yml",
+            "docs/privacy.md",
+            "docs/terms.md",
+            "docs/support.md",
             "plugins/yyz-dev-os/.codex-plugin/plugin.json",
             "scripts/build_plugin_package.py",
+            "submission/openai-public-listing.md",
+            "submission/openai-public-listing.json",
+            "submission/openai-review-cases.json",
         ]
     )
 
@@ -223,6 +232,80 @@ def validate_project_bootstrap_version(version: str, failures: list[str]) -> Non
         failures.append("Project bootstrap template version does not match VERSION")
 
 
+def validate_public_listing_candidate(version: str, failures: list[str]) -> None:
+    listing_path = ROOT / "submission/openai-public-listing.json"
+    listing = load_json(listing_path, failures)
+    if not isinstance(listing, dict):
+        return
+    expected = {
+        "schemaVersion": 1,
+        "status": "READY_FOR_PORTAL_SUBMISSION",
+        "distribution": "PRIVATE_TEAM_ONLY_UNTIL_APPROVED",
+        "pluginType": "SKILLS_ONLY",
+        "category": "Productivity",
+        "publisherIdentity": "杨元钊",
+        "developerDisplayName": "YYZ",
+    }
+    for key, value in expected.items():
+        if listing.get(key) != value:
+            failures.append(f"Public listing candidate has invalid {key}")
+    public_urls = listing.get("publicURLs")
+    expected_urls = {
+        "website": "https://eqd456-hub.github.io/yyz-dev-os/",
+        "support": "https://github.com/eqd456-hub/yyz-dev-os/issues",
+        "privacy": "https://eqd456-hub.github.io/yyz-dev-os/privacy.html",
+        "terms": "https://eqd456-hub.github.io/yyz-dev-os/terms.html",
+    }
+    if public_urls != expected_urls:
+        failures.append("Public listing candidate must declare the approved public URLs")
+    assets = listing.get("assets")
+    expected_asset_path = "./plugins/yyz-dev-os/assets/yyz-dev-os-logo.png"
+    if not isinstance(assets, dict) or assets != {
+        "logo": expected_asset_path,
+        "composerIcon": expected_asset_path,
+    }:
+        failures.append("Public listing candidate must declare the packaged logo and composer icon")
+    elif not IS_PLUGIN_SNAPSHOT:
+        plugin_root = (ROOT / "plugins/yyz-dev-os").resolve()
+        asset_path = (ROOT / expected_asset_path.removeprefix("./")).resolve()
+        if not asset_path.is_relative_to(plugin_root):
+            failures.append("Public listing asset must stay inside the plugin root")
+        elif asset_path.suffix.lower() != ".png" or not asset_path.is_file():
+            failures.append("Public listing asset must be an existing PNG file")
+        else:
+            asset_bytes = asset_path.read_bytes()
+            if asset_bytes[:8] != b"\x89PNG\r\n\x1a\n":
+                failures.append("Public listing asset must have a PNG signature")
+            elif len(asset_bytes) < 26 or asset_bytes[25] not in {4, 6}:
+                failures.append("Public listing asset must use a PNG alpha channel")
+    release_notes = listing.get("releaseNotes")
+    if not isinstance(release_notes, str) or version not in release_notes:
+        failures.append("Public listing candidate release notes must name the current VERSION")
+
+    cases_path = ROOT / "submission/openai-review-cases.json"
+    cases = load_json(cases_path, failures)
+    if not isinstance(cases, dict) or cases.get("schemaVersion") != 1:
+        failures.append("Public review cases must have schemaVersion 1")
+        return
+    for key, expected_count in (("positiveCases", 5), ("negativeCases", 3)):
+        values = cases.get(key)
+        if not isinstance(values, list) or len(values) != expected_count:
+            failures.append(f"Public review cases must contain {expected_count} {key}")
+            continue
+        seen_ids: set[str] = set()
+        for case in values:
+            if not isinstance(case, dict):
+                failures.append(f"Public {key} entries must be objects")
+                continue
+            case_id = case.get("id")
+            if not isinstance(case_id, str) or not case_id.strip() or case_id in seen_ids:
+                failures.append(f"Public {key} entries require unique non-empty ids")
+            seen_ids.add(case_id) if isinstance(case_id, str) else None
+            for field in ("prompt", "expectedOutcome"):
+                if not isinstance(case.get(field), str) or not case[field].strip():
+                    failures.append(f"Public {key} entry {case_id!r} requires {field}")
+
+
 def validate_plugin_packaging(version: str, failures: list[str]) -> None:
     marketplace_path = ROOT / ".agents/plugins/marketplace.json"
     marketplace = load_json(marketplace_path, failures)
@@ -253,8 +336,32 @@ def validate_plugin_packaging(version: str, failures: list[str]) -> None:
         failures.append("Plugin manifest version does not match VERSION")
     if manifest.get("skills") != "./skills/":
         failures.append("Plugin manifest skills path must be ./skills/")
+    if manifest.get("homepage") != "https://eqd456-hub.github.io/yyz-dev-os/":
+        failures.append("Plugin manifest homepage must match the public website")
+    if manifest.get("license") != "MIT":
+        failures.append("Plugin manifest license must be MIT")
     if any(key in manifest for key in ("mcpServers", "apps", "hooks")):
         failures.append("Skill-only plugin manifest must not declare MCP, apps, or hooks")
+    manifest_interface = manifest.get("interface")
+    expected_plugin_asset = "./assets/yyz-dev-os-logo.png"
+    manifest_author = manifest.get("author")
+    if not isinstance(manifest_author, dict) or manifest_author.get("name") != "杨元钊":
+        failures.append("Plugin manifest must use the selected individual publisher name")
+    if not isinstance(manifest_interface, dict) or any(
+        (
+            manifest_interface.get("developerName") != "YYZ",
+            manifest_interface.get("brandColor") != "#E10600",
+            manifest_interface.get("logo") != expected_plugin_asset,
+            manifest_interface.get("composerIcon") != expected_plugin_asset,
+            manifest_interface.get("websiteURL")
+            != "https://eqd456-hub.github.io/yyz-dev-os/",
+            manifest_interface.get("privacyPolicyURL")
+            != "https://eqd456-hub.github.io/yyz-dev-os/privacy.html",
+            manifest_interface.get("termsOfServiceURL")
+            != "https://eqd456-hub.github.io/yyz-dev-os/terms.html",
+        )
+    ):
+        failures.append("Plugin manifest must declare the packaged brand color, logo, and composer icon")
 
     build_script = ROOT / "scripts/build_plugin_package.py"
     result = subprocess.run(
@@ -329,6 +436,7 @@ def main() -> int:
     validate_recovery_contract(failures)
     validate_project_bootstrap_version(version, failures)
     if not IS_PLUGIN_SNAPSHOT:
+        validate_public_listing_candidate(version, failures)
         validate_plugin_packaging(version, failures)
 
     behavior_failures, behavior_counts = validate_suite()

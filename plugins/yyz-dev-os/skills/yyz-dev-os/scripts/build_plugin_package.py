@@ -18,10 +18,17 @@ PUBLISHED_FILES = (
     "VERSION",
     "CHANGELOG.md",
     "README.md",
+    "LICENSE",
     ".gitignore",
     ".gitattributes",
 )
-PUBLISHED_DIRECTORIES = ("agents", "references", "assets", "scripts", "tests")
+PUBLISHED_DIRECTORIES = (
+    "agents",
+    "references",
+    "assets",
+    "scripts",
+    "tests",
+)
 
 
 def is_publishable(path: Path) -> bool:

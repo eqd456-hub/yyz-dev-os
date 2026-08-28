@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "positiveCases": [
+    {
+      "id": "new-project-bootstrap",
+      "prompt": "Use YYZ Dev OS to start a new long-lived project with a minimal foundation and one validated core workflow.",
+      "expectedOutcome": "Uses project bootstrap and a proportionate vertical-slice plan."
+    },
+    {
+      "id": "existing-project-small-fix",
+      "prompt": "Use YYZ Dev OS to fix this existing project’s local empty-state bug and run the relevant test.",
+      "expectedOutcome": "Reads relevant code, makes a bounded change, and stays lightweight."
+    },
+    {
+      "id": "project-recovery",
+      "prompt": "Recover this existing project from its Git facts and durable project records before continuing.",
+      "expectedOutcome": "Uses the recovery entry and reports incomplete recovery when authority sources are missing."
+    },
+    {
+      "id": "high-risk-release",
+      "prompt": "Assess whether this verified candidate can be promoted to production.",
+      "expectedOutcome": "Loads the relevant release, verification, and approval safeguards."
+    },
+    {
+      "id": "major-cross-module-change",
+      "prompt": "Plan and implement a major cross-module workflow while preserving existing interfaces.",
+      "expectedOutcome": "Uses a scoped professional lifecycle and risk-matched validation."
+    }
+  ],
+  "negativeCases": [
+    {
+      "id": "pure-translation",
+      "prompt": "Translate this paragraph into Chinese.",
+      "expectedOutcome": "Does not invoke the engineering governance Skill."
+    },
+    {
+      "id": "ordinary-question",
+      "prompt": "What is the difference between HTTP and HTTPS?",
+      "expectedOutcome": "Answers normally without loading project governance."
+    },
+    {
+      "id": "non-development-task",
+      "prompt": "Suggest a simple dinner menu for tonight.",
+      "expectedOutcome": "Does not invoke the Skill."
+    }
+  ]
+}

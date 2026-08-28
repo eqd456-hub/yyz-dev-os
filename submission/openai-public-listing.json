@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "status": "READY_FOR_PORTAL_SUBMISSION",
+  "distribution": "PRIVATE_TEAM_ONLY_UNTIL_APPROVED",
+  "pluginType": "SKILLS_ONLY",
+  "category": "Productivity",
+  "publisherIdentity": "杨元钊",
+  "developerDisplayName": "YYZ",
+  "publicURLs": {
+    "website": "https://eqd456-hub.github.io/yyz-dev-os/",
+    "support": "https://github.com/eqd456-hub/yyz-dev-os/issues",
+    "privacy": "https://eqd456-hub.github.io/yyz-dev-os/privacy.html",
+    "terms": "https://eqd456-hub.github.io/yyz-dev-os/terms.html"
+  },
+  "assets": {
+    "logo": "./plugins/yyz-dev-os/assets/yyz-dev-os-logo.png",
+    "composerIcon": "./plugins/yyz-dev-os/assets/yyz-dev-os-logo.png"
+  },
+  "releaseNotes": "2.6.2 prepares a public-directory candidate for a Skills-only engineering governance plugin."
+}

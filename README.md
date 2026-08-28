@@ -38,3 +38,11 @@ codex plugin add yyz-dev-os@yyz-team
 ```
 
 Start a new Codex task after installation or update so it can discover the updated Skill. The repository root is the maintenance source; run `scripts/build_plugin_package.py` before publishing and `scripts/build_plugin_package.py --check` before promotion.
+
+## Public directory candidate
+
+This package has user authorization for public release and is ready for Portal submission, but it has not been submitted or approved. Until approval and public distribution are completed, installation remains the private-team flow above and still requires repository access.
+
+The candidate is Skills-only: it includes no MCP server, hosted service, API key, or plugin-managed data collection. The maintenance repository keeps public-listing, privacy, terms, support, and review materials in `submission/` and `docs/`; those publication files are intentionally excluded from the runtime Skill snapshot. The red-and-black plugin logo and composer icon are packaged. The public site is expected at `https://eqd456-hub.github.io/yyz-dev-os/`, with support through the issue tracker and Pages privacy/terms URLs. The verified individual publisher is `杨元钊`, while the developer display name is `YYZ`; check the Portal preview for public identity visibility before submission. After approval and public availability, colleagues can install from the public directory without GitHub or private-cloud access.
+
+License: [MIT](LICENSE).
