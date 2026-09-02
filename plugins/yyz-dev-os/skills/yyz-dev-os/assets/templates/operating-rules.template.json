@@ -18,6 +18,15 @@
     "userApprovalRequiredForPromotion": true,
     "promotionMethod": "<project-approved-method>"
   },
+  "orchestration": {
+    "enabled": false,
+    "maxDelegationDepth": 2,
+    "projectOrchestratorTaskId": null,
+    "modules": [],
+    "oneActiveWriterPerWorktree": true,
+    "oneActiveWriterPerResponsibility": true,
+    "quietManagedTaskReporting": false
+  },
   "memory": {
     "doNotUseChatMemoryAsProjectTruth": true
   },

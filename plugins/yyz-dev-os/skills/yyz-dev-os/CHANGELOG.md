@@ -2,6 +2,22 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.8.0] - 2026-09-02
+
+### Added
+
+- Add a two-level project/module orchestration protocol with stable logical roles, terminal bounded workers, task contracts, module acceptance, and fail-closed ownership checks.
+- Add an optional managed multi-task quiet-reporting mode and pointer-only cross-task handoffs that retain full technical evidence in the responsible task.
+- Add explicit multi-message feedback collection and guarded successor-task rotation for reliable long-running work.
+- Add behavior contracts for routing depth, writer conflicts, module acceptance, review separation, quiet reporting, required interruptions, explicit status requests, and compact handoffs.
+
+### Changed
+
+- Separate the stable role registry from the capability-adjustable Sol, Terra, and Luna model mapping.
+- Separate product acceptance from technical and release readiness, and keep execution updates result-oriented without hiding required progress or blockers.
+- Extend project Operating Rules with optional orchestration, writer-ownership, and quiet-reporting configuration without changing existing Project Brain authority.
+- Keep small direct work lightweight while routing registered module collaboration and separable stages through the existing verification, review, Git, promotion, handoff, and recovery rules.
+
 ## [2.6.2] - 2026-08-28
 
 ### Added

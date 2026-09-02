@@ -45,6 +45,7 @@ REQUIRED_FILES = [
     "references/rules/self-audit-policy.md",
     "references/protocols/project-bootstrap.md",
     "references/protocols/project-recovery.md",
+    "references/protocols/multi-agent-orchestration.md",
     "references/protocols/code-health-audit.md",
     "references/protocols/website-development.md",
     "references/protocols/implementation.md",
@@ -230,6 +231,64 @@ def validate_project_bootstrap_version(version: str, failures: list[str]) -> Non
         failures.append("Project bootstrap template must declare exactly one Loaded compatible Skill version")
     elif matches[0] != version:
         failures.append("Project bootstrap template version does not match VERSION")
+
+
+def validate_orchestration_contract(skill_text: str, failures: list[str]) -> None:
+    role_text = (ROOT / "references/rules/ai-role-policy.md").read_text(encoding="utf-8")
+    routing_text = (ROOT / "references/rules/routing-policy.md").read_text(encoding="utf-8")
+    protocol_text = (ROOT / "references/protocols/multi-agent-orchestration.md").read_text(
+        encoding="utf-8"
+    )
+    roles = {
+        "PROJECT_ORCHESTRATOR": "GPT-5.6 Sol, high reasoning",
+        "MODULE_ORCHESTRATOR": "GPT-5.6 Sol, high reasoning",
+        "EXPLORER": "GPT-5.6 Luna, low reasoning",
+        "IMPLEMENTER": "GPT-5.6 Terra, medium or high reasoning",
+        "STANDARD_REVIEWER": "GPT-5.6 Terra, medium or high reasoning",
+        "CRITICAL_REVIEWER": "GPT-5.6 Sol, high or xhigh reasoning",
+    }
+    for role, model in roles.items():
+        if f"`{role}`" not in role_text:
+            failures.append(f"AI Role Policy is missing orchestration role {role}")
+        if f"| `{role}` | {model} |" not in routing_text:
+            failures.append(f"Routing Policy is missing the preferred mapping for {role}")
+    for phrase in (
+        "capability-informed default",
+        "Override it when verified Global or Project Capability Ledger evidence",
+        "preserve the logical role",
+    ):
+        if phrase not in routing_text:
+            failures.append(f"Routing Policy is missing model-override boundary: {phrase}")
+    for phrase in (
+        "bug fixing",
+        "code review",
+        "refactoring",
+        "task delegation",
+        "subagent orchestration",
+        "module collaboration",
+    ):
+        if phrase not in skill_text:
+            failures.append(f"SKILL.md description is missing orchestration trigger: {phrase}")
+    if "mayDelegate" not in protocol_text or "must be `false`" not in protocol_text:
+        failures.append("Multi-Agent Orchestration must make bounded workers terminal")
+    if "one active writer" not in protocol_text.lower():
+        failures.append("Multi-Agent Orchestration must preserve one active writer")
+
+    rules = load_json(ROOT / "assets/templates/operating-rules.template.json", failures)
+    orchestration = rules.get("orchestration") if isinstance(rules, dict) else None
+    expected = {
+        "enabled": False,
+        "maxDelegationDepth": 2,
+        "oneActiveWriterPerWorktree": True,
+        "oneActiveWriterPerResponsibility": True,
+        "quietManagedTaskReporting": False,
+    }
+    if not isinstance(orchestration, dict):
+        failures.append("Operating Rules template is missing orchestration configuration")
+    else:
+        for key, value in expected.items():
+            if orchestration.get(key) != value:
+                failures.append(f"Operating Rules orchestration has invalid {key}")
 
 
 def validate_public_listing_candidate(version: str, failures: list[str]) -> None:
@@ -435,6 +494,7 @@ def main() -> int:
         failures.append("Recovery schema must declare JSON Schema draft 2020-12")
     validate_recovery_contract(failures)
     validate_project_bootstrap_version(version, failures)
+    validate_orchestration_contract(skill_text, failures)
     if not IS_PLUGIN_SNAPSHOT:
         validate_public_listing_candidate(version, failures)
         validate_plugin_packaging(version, failures)

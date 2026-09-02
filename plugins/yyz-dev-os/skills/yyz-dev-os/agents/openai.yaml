@@ -1,4 +1,4 @@
 interface:
   display_name: "YYZ Dev OS"
-  short_description: "按任务复杂度与风险加载专业开发生命周期、审查和发布治理"
+  short_description: "按任务复杂度与风险加载开发、模块协作、审查和发布治理"
   default_prompt: "Use $yyz-dev-os to plan and execute this development task with only the lifecycle and governance it needs."

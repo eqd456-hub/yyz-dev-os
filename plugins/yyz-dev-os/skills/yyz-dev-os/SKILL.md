@@ -1,6 +1,6 @@
 ---
 name: yyz-dev-os
-description: Apply proportionate professional development lifecycle and risk governance to non-trivial development work or planning, plan-first requests, Project Brain/durable memory, data migration/deletion, secrets/permissions/security boundaries, high-risk Git/deploy/promotion, shared-core/orchestrator-core, major architecture, rollback, trusted evidence, or independent review. Keep routine small local work lightweight.
+description: Apply proportionate professional engineering governance to development, bug fixing, code review, explicitly batched feedback, refactoring, task delegation, subagent orchestration, module collaboration, managed multi-task reporting, Project Brain, security/data boundaries, high-risk Git/deploy/promotion, recovery, trusted evidence, or independent review. Keep routine small local work lightweight.
 ---
 
 # YYZ Dev OS
@@ -51,17 +51,20 @@ Escalate to governed work only when the task or observed facts involve data migr
 ## Select references by task
 
 - For a non-trivial development request, plan-first request, or behavior ambiguity, read [Implementation](references/protocols/implementation.md), [Approval and Risk Policy](references/rules/approval-risk-policy.md), [Verification Policy](references/rules/verification-policy.md), and [Reporting Policy](references/rules/reporting-policy.md). Read [Source of Truth](references/rules/source-of-truth.md) or [Memory Policy](references/rules/memory-policy.md) only when their boundary is relevant.
+- When the user explicitly asks to provide review feedback across multiple messages before action, read [Implementation](references/protocols/implementation.md) and [Approval and Risk Policy](references/rules/approval-risk-policy.md); collect until the user closes the batch, then consolidate once and resume the normal approval flow.
+- For an explicit progress-visibility or reporting-noise preference, read [Reporting Policy](references/rules/reporting-policy.md); preserve host-required updates, material blockers, protected approvals, and the final report.
 - For a new long-lived website, a major website phase/cross-module capability, or explicit website planning, read [Website Development](references/protocols/website-development.md) with only the implementation, verification, security, or release references the current phase requires.
 - For project recovery, stale/conflicting state, or truth disputes, read [Source of Truth](references/rules/source-of-truth.md), [Recovery Policy](references/rules/recovery-policy.md), and [Project Recovery](references/protocols/project-recovery.md).
 - For an explicit code-health audit or its evidence triggers, read [Code Health Audit](references/protocols/code-health-audit.md). Add the security/data references only if the audited surface reaches those boundaries.
 - For data migration/deletion, secrets, permissions, security boundaries, rollback, or enterprise controls, read [Operating Principles](references/rules/operating-principles.md), [Approval and Risk Policy](references/rules/approval-risk-policy.md), and [Storage Policy](references/rules/storage-policy.md).
 - For high-risk Git, deployment, promotion, shared-core, orchestrator-core, or major architecture work, read [Git Policy](references/rules/git-policy.md), [Verification Policy](references/rules/verification-policy.md), and [Implementation](references/protocols/implementation.md).
 - For executor/model selection, capability evidence, or a task with clearly separable worker stages, read [AI Role Policy](references/rules/ai-role-policy.md) and [Routing Policy](references/rules/routing-policy.md).
+- For project/module orchestration, long-lived module leads, subagent delegation, responsibility routing, or concurrent workers, read [Multi-Agent Orchestration](references/protocols/multi-agent-orchestration.md), [AI Role Policy](references/rules/ai-role-policy.md), and [Routing Policy](references/rules/routing-policy.md).
 - For explicit or required independent review/trusted evidence, read [Independent Review](references/protocols/independent-review.md) and [Repair Loop](references/protocols/repair-loop.md) as applicable.
 - For a durable Context Handoff, read [Project Handoff](references/protocols/project-handoff.md), [Memory Policy](references/rules/memory-policy.md), and the recovery references needed to validate the replacement context.
 - For durable memory or project bootstrap, read [Memory Policy](references/rules/memory-policy.md) and [Project Bootstrap](references/protocols/project-bootstrap.md).
 - For explicit Skill evaluation, a detected process anomaly, or evidence-backed recurring behavior, read [Self-Audit Policy](references/rules/self-audit-policy.md).
-- For governed user-facing status, read [Reporting Policy](references/rules/reporting-policy.md).
+- For governed user-facing status or an accepted managed-task quiet-reporting preference, read [Reporting Policy](references/rules/reporting-policy.md).
 
 ## Bootstrap assets
 

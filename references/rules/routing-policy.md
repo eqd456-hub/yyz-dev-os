@@ -10,15 +10,29 @@ Do not treat public rankings, vendor claims, or an AI's self-assessment as verif
 
 ## Preferred Codex orchestration profile
 
-The primary agent owns requirement understanding, overall solution and decomposition, worker coordination, result acceptance, and final reporting. Prefer GPT-5.6 Sol with high reasoning for that role.
+The project orchestrator owns requirement understanding, overall solution and decomposition, worker coordination, integration acceptance, and final reporting.
 
-Before substantial execution, perform one brief routing check. For a bounded, independent stage, delegation is the default when it materially improves speed, context quality, or cost:
+Keep the current preferred model mapping in this policy rather than embedding model names in role definitions or protocols:
 
-- Prefer GPT-5.6 Luna with low reasoning for narrow search, discovery, extraction, classification, and log triage.
-- Prefer GPT-5.6 Terra with medium or high reasoning for scoped implementation, fixes, and test work.
-- Prefer GPT-5.6 Sol with high or xhigh reasoning for difficult architecture, security work, and independent review.
+| Role | Preferred model profile |
+| --- | --- |
+| `PROJECT_ORCHESTRATOR` | GPT-5.6 Sol, high reasoning |
+| `MODULE_ORCHESTRATOR` | GPT-5.6 Sol, high reasoning |
+| `EXPLORER` | GPT-5.6 Luna, low reasoning |
+| `IMPLEMENTER` | GPT-5.6 Terra, medium or high reasoning |
+| `STANDARD_REVIEWER` | GPT-5.6 Terra, medium or high reasoning |
+| `CRITICAL_REVIEWER` | GPT-5.6 Sol, high or xhigh reasoning |
 
-When the orchestration interface supports explicit model or role selection, request the intended identity explicitly; do not assume an unlabeled worker uses the preferred model. The primary agent may keep a stage direct only when it is a trivial one-step action, cannot be separated safely, would create a same-worktree write conflict, lacks an available suitable executor, or costs more to delegate than to perform. The primary agent must inspect worker evidence before accepting a result. Never allow multiple agents to write the same worktree.
+This table is a capability-informed default, not a permanent vendor binding. Override it when verified Global or Project Capability Ledger evidence, availability, or the current risk supports a better identity; preserve the logical role and its authority boundary.
+
+Before substantial execution, perform one brief routing check. For a bounded, independent stage, delegation is the default when it materially improves speed, context quality, quality assurance, or cost:
+
+- Route search, code maps, call chains, logs, documentation, batch inspection, and read-only audit to `EXPLORER`.
+- Route bounded features, bug fixes, UI changes, interfaces, tests, and limited refactoring to `IMPLEMENTER`.
+- Route ordinary diff, missing-test, and maintainability review to `STANDARD_REVIEWER`.
+- Keep architecture, permissions, security, data migration, cross-module coordination, major refactoring, and difficult failures under `PROJECT_ORCHESTRATOR`; use `CRITICAL_REVIEWER` when independent critical review is required.
+
+When the orchestration interface supports explicit model or role selection, request the intended identity explicitly; do not assume an unlabeled worker uses the preferred model. The project orchestrator may keep a stage direct only when it is a trivial one-step action, cannot be separated safely, would create a same-worktree write conflict, lacks an available suitable executor, or costs more to delegate than to perform. The responsible orchestrator must inspect worker evidence before accepting a result. Never allow multiple agents to write the same worktree.
 
 ## Minimize total workflow tokens
 
@@ -32,7 +46,7 @@ Use an existing callable ChatGPT planning advisor only for a non-trivial archite
 
 Send one bounded consultation by default. Include only the goal, observed project facts and evidence locations, constraints, decision questions, and desired compact output. Never send secrets, credentials, private user data, full repository context, or unrelated project history. Ask for alternatives, a recommendation, major risks, and unknowns—not implementation or external actions.
 
-The primary Sol technical lead must validate the advice against real code, Git facts, and project rules, then accept, modify, or reject it. The advisor never owns the final plan. Skip the consultation when its identity or availability is unverified, the context cannot be shared safely, the brief would be large, the task is ordinary, or coordination is unlikely to prevent enough rework. Report `INSUFFICIENT_EVIDENCE` rather than claiming token savings until a bounded pilot measures total tokens, latency, quality, and rework.
+The project orchestrator must validate the advice against real code, Git facts, and project rules, then accept, modify, or reject it. The advisor never owns the final plan. Skip the consultation when its identity or availability is unverified, the context cannot be shared safely, the brief would be large, the task is ordinary, or coordination is unlikely to prevent enough rework. Report `INSUFFICIENT_EVIDENCE` rather than claiming token savings until a bounded pilot measures total tokens, latency, quality, and rework.
 
 ## Make routing observable
 

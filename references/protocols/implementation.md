@@ -20,6 +20,14 @@ Apply [Approval and Risk Policy](../rules/approval-risk-policy.md):
 
 For every non-trivial or cross-module implementation, create a task-local technical execution card before coding. Create it after any required product decision; for an explicitly direct task that needs no approval, create it after reading the evidence and before implementation. Do not create a card for a small, clear, low-risk task, even when the user requested a plan first. The card is working context, not an approval artifact or truth source, and stays in the task/session rather than a file unless an existing durable handoff rule applies. Scale it to the work; it can record the evidence read, business-rule owner and call chain, bounded scope, reuse choice, files or abstractions affected, dependencies or migrations, selected approach and material alternatives, tests, rollback conditions, and expected change size. The user owns product outcomes, not routine low-level implementation choices.
 
+When useful delegation, a registered long-lived module owner, cross-module coordination, concurrent workers, or risk isolation applies, use [Multi-Agent Orchestration](multi-agent-orchestration.md). Extend the task-local execution card with the assignment contract required there; do not create a second planning or authority system.
+
+### Collect review feedback before repair
+
+When the user explicitly says that review feedback will arrive across multiple messages and asks the agent to wait, enter a task-local collection mode. Acknowledge and record each item compactly, but do not modify files, delegate repair, or generate a separate solution for every item before the user gives a clear completion signal. This mode is an explicit interaction contract, not a default for ordinary bug reports or isolated feedback.
+
+After the user closes the batch, deduplicate and group the feedback, identify conflicts or missing product decisions, and present one consolidated scope and plan. Then continue under the normal approval and risk policy; collection mode neither grants implementation authority nor creates an extra approval gate when the current request already provides it.
+
 ### Choose the smallest maintainable solution
 
 Prefer, in order: existing capability, extension of an existing module, a bounded new module, then refactoring stable code only when necessary. Prefer project-supported patterns and official primary documentation for platform behavior. Add a dependency only when it is necessary, compatible, safely maintainable, and proportionate to its size and risk; do not introduce one merely to avoid understanding the local design.
