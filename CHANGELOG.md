@@ -10,6 +10,8 @@ All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Chan
 - Add an optional managed multi-task quiet-reporting mode and pointer-only cross-task handoffs that retain full technical evidence in the responsible task.
 - Add explicit multi-message feedback collection and guarded successor-task rotation for reliable long-running work.
 - Add behavior contracts for routing depth, writer conflicts, module acceptance, review separation, quiet reporting, required interruptions, explicit status requests, and compact handoffs.
+- Add risk-triggered durable architecture decisions that reuse each project's accepted Decisions, ADR, or architecture binding instead of creating a parallel registry.
+- Add an optional project-configured `high-assurance` profile with scoped verification, review, documentation, Project Brain, and candidate-scope requirements.
 
 ### Changed
 
@@ -17,6 +19,7 @@ All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Chan
 - Separate product acceptance from technical and release readiness, and keep execution updates result-oriented without hiding required progress or blockers.
 - Extend project Operating Rules with optional orchestration, writer-ownership, and quiet-reporting configuration without changing existing Project Brain authority.
 - Keep small direct work lightweight while routing registered module collaboration and separable stages through the existing verification, review, Git, promotion, handoff, and recovery rules.
+- Keep architecture records and high-assurance gates risk- or project-triggered; ordinary local work does not gain mandatory ADRs, full test matrices, Independent Review, or Project Brain churn.
 
 ## [2.6.2] - 2026-08-28
 

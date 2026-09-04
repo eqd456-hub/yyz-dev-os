@@ -955,6 +955,96 @@
           "accept-self-reported-capability-as-truth"
         ]
       }
+    },
+    {
+      "id": "durable-architecture-decision",
+      "prompt": "这个变更会重划多个模块之间的授权 API 边界，形成长期约束且回滚成本很高。请先按项目已有决策机制记录方案，再实施。",
+      "expected": {
+        "mode": "governed",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/rules/verification-policy.md"
+        ],
+        "requiredActions": [
+          "identify-affected-architecture-invariants",
+          "compare-material-alternatives-and-tradeoffs",
+          "update-existing-project-decision-binding",
+          "apply-critical-review-only-when-risk-or-gate-requires"
+        ],
+        "forbiddenDefaultActions": [
+          "create-parallel-architecture-registry",
+          "invent-fixed-adr-file-convention",
+          "treat-author-self-review-as-independent-review"
+        ]
+      }
+    },
+    {
+      "id": "cross-module-local-change-no-architecture-record",
+      "prompt": "修复两个相邻模块之间的局部类型兼容问题；不改变模块所有权、依赖方向、集成契约、权威边界或长期约束。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/rules/verification-policy.md"
+        ],
+        "requiredActions": [
+          "use-targeted-local-verification"
+        ],
+        "forbiddenDefaultActions": [
+          "create-durable-architecture-record",
+          "run-full-test-matrix",
+          "require-independent-review",
+          "update-project-brain-without-durable-state-change"
+        ]
+      }
+    },
+    {
+      "id": "configured-high-assurance-profile",
+      "prompt": "项目已验证的 Operating Rules 明确将当前受保护模块纳入 high-assurance，并声明了验证命令、独立审查和候选范围要求。请按该配置完成候选验证。",
+      "expected": {
+        "mode": "governed",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/rules/verification-policy.md"
+        ],
+        "requiredActions": [
+          "apply-only-configured-high-assurance-requirements",
+          "run-declared-verification-commands",
+          "update-docs-only-when-affected",
+          "update-project-brain-only-for-durable-state-change",
+          "verify-clean-candidate-scope"
+        ],
+        "forbiddenDefaultActions": [
+          "clean-unrelated-dirty-worktree-changes",
+          "run-unconfigured-test-categories",
+          "treat-missing-required-evidence-as-pass"
+        ]
+      }
+    },
+    {
+      "id": "unconfigured-high-assurance-not-default",
+      "prompt": "这个普通局部功能没有项目 high-assurance 配置，也不涉及安全、数据、发布或架构边界。请完成修改并做必要测试。",
+      "expected": {
+        "mode": "daily",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [],
+        "requiredActions": [
+          "use-targeted-local-verification"
+        ],
+        "forbiddenDefaultActions": [
+          "assume-high-assurance-opt-in",
+          "require-full-governance",
+          "require-architecture-decision",
+          "require-independent-review"
+        ]
+      }
     }
   ]
 }

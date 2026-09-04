@@ -18,6 +18,19 @@
     "userApprovalRequiredForPromotion": true,
     "promotionMethod": "<project-approved-method>"
   },
+  "assurance": {
+    "defaultProfile": "risk-matched",
+    "highAssurance": {
+      "enabled": false,
+      "protectedSurfaces": [],
+      "requiredVerificationCommands": [],
+      "requireArchitectureDecision": false,
+      "requireIndependentReview": true,
+      "requireDocumentationUpdateWhenAffected": true,
+      "requireProjectBrainUpdateWhenDurableStateChanges": true,
+      "requireCleanCandidateScope": true
+    }
+  },
   "orchestration": {
     "enabled": false,
     "maxDelegationDepth": 2,

@@ -22,6 +22,14 @@ For ordinary local work, record only the risk-matched checks actually run and th
 
 For governed candidates, delivery gates, or explicit trusted-evidence requests, apply the evidence requirements below. Select the complete categories only when the active risk, protected surface, release gate, or acceptance contract requires them.
 
+## Project-configured high-assurance profiles
+
+A project may declare an optional `high-assurance` profile in validated Project Operating Rules for specific protected surfaces or task classes. The profile is not a global default and does not turn every feature into a release-grade workflow.
+
+When the current task matches the declared scope, apply only the configured requirements. They may include named verification commands, a durable architecture decision or architecture review, Independent Review, documentation updates when affected, Project Brain updates when durable state changes, and proof that the candidate scope contains no unintended files or changes. Candidate-scope cleanliness never authorizes cleaning, stashing, resetting, or overwriting unrelated user work in a dirty worktree.
+
+Missing required evidence blocks only the gate that depends on that profile. Do not run every test category automatically, create an architecture record for ordinary local choices, update unaffected documentation or Project Brain files, or claim that an unconfigured project has opted into `high-assurance`.
+
 ## Evidence requirements
 
 Bind evidence to the candidate identity, command or procedure, environment, time, exit/result, and relevant output. Prefer deterministic and reproducible evidence. Treat mutable local artifacts as untrusted if the environment can modify them unexpectedly; do not bypass enterprise controls to recover trust.

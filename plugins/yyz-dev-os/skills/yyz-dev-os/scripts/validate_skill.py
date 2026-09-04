@@ -291,6 +291,61 @@ def validate_orchestration_contract(skill_text: str, failures: list[str]) -> Non
                 failures.append(f"Operating Rules orchestration has invalid {key}")
 
 
+def validate_assurance_contract(skill_text: str, failures: list[str]) -> None:
+    implementation_text = (ROOT / "references/protocols/implementation.md").read_text(
+        encoding="utf-8"
+    )
+    verification_text = (ROOT / "references/rules/verification-policy.md").read_text(
+        encoding="utf-8"
+    )
+    for phrase in (
+        "Record durable architecture decisions proportionately",
+        "materially changes cross-module ownership, dependency direction",
+        "Merely touching multiple modules is not sufficient",
+        "existing accepted Decisions, ADR, or architecture binding",
+        "Do not create a fixed new ADR file",
+        "Ordinary bounded features and local implementation choices do not require",
+    ):
+        if phrase not in implementation_text:
+            failures.append(f"Implementation is missing architecture-assurance boundary: {phrase}")
+    for phrase in (
+        "Project-configured high-assurance profiles",
+        "validated Project Operating Rules",
+        "not a global default",
+        "Candidate-scope cleanliness never authorizes cleaning",
+        "Missing required evidence blocks only the gate",
+        "unconfigured project",
+    ):
+        if phrase not in verification_text:
+            failures.append(f"Verification Policy is missing high-assurance boundary: {phrase}")
+    if "validated project `high-assurance` profile" not in skill_text:
+        failures.append("SKILL.md does not route project high-assurance profiles")
+
+    rules = load_json(ROOT / "assets/templates/operating-rules.template.json", failures)
+    assurance = rules.get("assurance") if isinstance(rules, dict) else None
+    expected_high_assurance = {
+        "enabled": False,
+        "protectedSurfaces": [],
+        "requiredVerificationCommands": [],
+        "requireArchitectureDecision": False,
+        "requireIndependentReview": True,
+        "requireDocumentationUpdateWhenAffected": True,
+        "requireProjectBrainUpdateWhenDurableStateChanges": True,
+        "requireCleanCandidateScope": True,
+    }
+    if not isinstance(assurance, dict):
+        failures.append("Operating Rules template is missing assurance configuration")
+        return
+    if assurance.get("defaultProfile") != "risk-matched":
+        failures.append("Operating Rules assurance default must remain risk-matched")
+    high_assurance = assurance.get("highAssurance")
+    if not isinstance(high_assurance, dict):
+        failures.append("Operating Rules template is missing highAssurance configuration")
+        return
+    if high_assurance != expected_high_assurance:
+        failures.append("Operating Rules highAssurance defaults or fields are invalid")
+
+
 def validate_public_listing_candidate(version: str, failures: list[str]) -> None:
     listing_path = ROOT / "submission/openai-public-listing.json"
     listing = load_json(listing_path, failures)
@@ -495,6 +550,7 @@ def main() -> int:
     validate_recovery_contract(failures)
     validate_project_bootstrap_version(version, failures)
     validate_orchestration_contract(skill_text, failures)
+    validate_assurance_contract(skill_text, failures)
     if not IS_PLUGIN_SNAPSHOT:
         validate_public_listing_candidate(version, failures)
         validate_plugin_packaging(version, failures)

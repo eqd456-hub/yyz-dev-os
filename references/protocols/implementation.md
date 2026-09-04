@@ -22,6 +22,12 @@ For every non-trivial or cross-module implementation, create a task-local techni
 
 When useful delegation, a registered long-lived module owner, cross-module coordination, concurrent workers, or risk isolation applies, use [Multi-Agent Orchestration](multi-agent-orchestration.md). Extend the task-local execution card with the assignment contract required there; do not create a second planning or authority system.
 
+### Record durable architecture decisions proportionately
+
+Persist an architecture decision only when the change materially changes cross-module ownership, dependency direction, an integration contract, or another authoritative API, data, security, or module boundary; creates a long-lived project constraint; or has materially high rollback or maintenance cost. Merely touching multiple modules is not sufficient. Ordinary bounded features and local implementation choices do not require a durable decision record.
+
+For a triggered decision, identify the affected architectural invariants, compare material alternatives and tradeoffs, record the selected rationale and maintenance or rollback implications, and update the project's existing accepted Decisions, ADR, or architecture binding. Do not create a fixed new ADR file, parallel architecture registry, or second source of truth merely to satisfy this protocol. Add a `CRITICAL_REVIEWER` only when the decision's risk or an accepted project gate requires independent critical review.
+
 ### Collect review feedback before repair
 
 When the user explicitly says that review feedback will arrive across multiple messages and asks the agent to wait, enter a task-local collection mode. Acknowledge and record each item compactly, but do not modify files, delegate repair, or generate a separate solution for every item before the user gives a clear completion signal. This mode is an explicit interaction contract, not a default for ordinary bug reports or isolated feedback.
