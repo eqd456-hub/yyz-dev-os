@@ -2,6 +2,16 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.8.1] - 2026-09-04
+
+### Fixed
+
+- Make a verified registered module owner authoritative for module-owned writes so a project orchestrator cannot bypass the module orchestrator with a temporary worker for token, cost, speed, or bounded-scope reasons.
+- Require explicit reassignment and unique-writer transfer before substituting for an unavailable module orchestrator.
+- Add project Operating Rules switches and positive/negative behavior contracts for module-owner priority without changing the normal lightweight flow for unowned work.
+- Require frontend/backend features to confirm the authoritative API contract and coordinate breaking field or behavior changes across affected module owners.
+- Add `A` frontend-only, `B` frontend/backend coordinated, and `C` architecture-changing release-scope classification with proportionate verification requirements.
+
 ## [2.8.0] - 2026-09-02
 
 ### Added

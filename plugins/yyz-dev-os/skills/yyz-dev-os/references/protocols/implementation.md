@@ -10,6 +10,22 @@ Turn the user's plain-language request into the smallest useful working model: p
 
 Identify the code-level owner of each business rule that changes. Follow the existing call chain and keep that owner authoritative; do not add parallel entry points, duplicated policy, or a competing source of behavior.
 
+### Confirm API contracts before cross-layer work
+
+When a new feature changes or depends on frontend-to-backend interaction, inspect the authoritative API contract before implementation: the real route, request and response fields, types or schema, validation, error behavior, compatibility expectations, current consumers, and contract-relevant tests. The frontend must not invent an endpoint, field, or behavior that the observed backend contract does not provide. The backend must not silently rename, remove, reinterpret, or change the requiredness of a field used by the frontend.
+
+If the contract must change, identify its authoritative owner, notify and route work through every affected registered module owner, choose an explicit compatibility or coordinated-version strategy, and verify both producer and consumer behavior. If no authoritative contract can be established or the two sides conflict, stop before implementing across the boundary and report the missing decision or evidence.
+
+### Classify release scope before release work
+
+Classify a feature's release scope from observed impact before preparing a candidate or release:
+
+- `A — frontend-only`: the change is independently releasable and does not alter or depend on a new backend/API contract. Prove that boundary instead of assuming it.
+- `B — frontend/backend coordinated`: the change adds, changes, or depends on frontend-to-backend behavior. Confirm the authoritative API contract, coordinate the affected module owners, and keep producer and consumer versions compatible.
+- `C — architecture-changing`: the change materially alters architecture, ownership, dependency direction, integration contracts, security/data boundaries, or another durable system invariant. Apply the durable architecture-decision rule and the governed integration evidence required by the affected boundary.
+
+Use the highest class supported by the observed impact. Do not label a change `A` merely to avoid backend coordination, or label ordinary local work `C` merely to trigger more ceremony.
+
 ### Decide how to proceed
 
 Apply [Approval and Risk Policy](../rules/approval-risk-policy.md):

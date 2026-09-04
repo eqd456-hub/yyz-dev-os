@@ -273,12 +273,32 @@ def validate_orchestration_contract(skill_text: str, failures: list[str]) -> Non
         failures.append("Multi-Agent Orchestration must make bounded workers terminal")
     if "one active writer" not in protocol_text.lower():
         failures.append("Multi-Agent Orchestration must preserve one active writer")
+    for phrase in (
+        "verified registered module owner has routing priority",
+        "must route module-owned writes to the module orchestrator",
+        "must not create a temporary writer to bypass it",
+        "explicit reassignment",
+    ):
+        if phrase not in protocol_text:
+            failures.append(f"Multi-Agent Orchestration is missing module-owner priority: {phrase}")
+    for phrase in (
+        "Resolve registered module ownership before selecting a temporary executor",
+        "do not let it bypass a registered module owner",
+    ):
+        if phrase not in routing_text:
+            failures.append(f"Routing Policy is missing module-owner priority: {phrase}")
+    if "must not treat module-owned work as direct merely because it is small" not in role_text:
+        failures.append("AI Role Policy must keep small module-owned work under its module owner")
+    if "route module-owned writes through that module orchestrator" not in skill_text:
+        failures.append("SKILL.md is missing the module-owner priority invariant")
 
     rules = load_json(ROOT / "assets/templates/operating-rules.template.json", failures)
     orchestration = rules.get("orchestration") if isinstance(rules, dict) else None
     expected = {
         "enabled": False,
         "maxDelegationDepth": 2,
+        "registeredModuleOwnershipRequiredForWrites": True,
+        "projectOrchestratorMayBypassRegisteredModuleForWrites": False,
         "oneActiveWriterPerWorktree": True,
         "oneActiveWriterPerResponsibility": True,
         "quietManagedTaskReporting": False,
@@ -344,6 +364,42 @@ def validate_assurance_contract(skill_text: str, failures: list[str]) -> None:
         return
     if high_assurance != expected_high_assurance:
         failures.append("Operating Rules highAssurance defaults or fields are invalid")
+
+
+def validate_api_contract_discipline(failures: list[str]) -> None:
+    implementation_text = (ROOT / "references/protocols/implementation.md").read_text(
+        encoding="utf-8"
+    )
+    verification_text = (ROOT / "references/rules/verification-policy.md").read_text(
+        encoding="utf-8"
+    )
+    for phrase in (
+        "Confirm API contracts before cross-layer work",
+        "inspect the authoritative API contract before implementation",
+        "frontend must not invent an endpoint, field, or behavior",
+        "backend must not silently rename, remove, reinterpret",
+        "route work through every affected registered module owner",
+        "stop before implementing across the boundary",
+    ):
+        if phrase not in implementation_text:
+            failures.append(f"Implementation is missing API contract discipline: {phrase}")
+    for phrase in (
+        "Classify release scope before release work",
+        "A — frontend-only",
+        "B — frontend/backend coordinated",
+        "C — architecture-changing",
+        "Do not label a change `A` merely to avoid backend coordination",
+    ):
+        if phrase not in implementation_text:
+            failures.append(f"Implementation is missing release-scope classification: {phrase}")
+    for phrase in (
+        "Release-scope verification",
+        "complete integration suite declared for the affected architecture boundaries",
+        "not an automatic whole-repository test run",
+        "cannot be downgraded by relabeling the release scope",
+    ):
+        if phrase not in verification_text:
+            failures.append(f"Verification Policy is missing release-scope evidence: {phrase}")
 
 
 def validate_public_listing_candidate(version: str, failures: list[str]) -> None:
@@ -551,6 +607,7 @@ def main() -> int:
     validate_project_bootstrap_version(version, failures)
     validate_orchestration_contract(skill_text, failures)
     validate_assurance_contract(skill_text, failures)
+    validate_api_contract_discipline(failures)
     if not IS_PLUGIN_SNAPSHOT:
         validate_public_listing_candidate(version, failures)
         validate_plugin_packaging(version, failures)

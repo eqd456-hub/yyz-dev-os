@@ -47,6 +47,7 @@ Escalate to governed work only when the task or observed facts involve data migr
 8. For a new long-lived website, a major website phase or cross-module capability, or explicit website planning, use [Website Development](references/protocols/website-development.md). Do not load it for an ordinary website bug, UI tweak, or local feature.
 9. Stop when the request is satisfied, necessary tests pass, and no major unresolved risk remains. Record extra findings for later instead of expanding the task.
 10. Before reporting, quietly self-audit mode selection, evidence read, decision ownership, required validation, scope, context proportionality, and the stopping condition. If they pass, say nothing and persist nothing; correct anomalies or report only material unresolved ones. This self-audit is neither Independent Review nor Trusted Evidence.
+11. When validated project rules register a long-lived module owner, route module-owned writes through that module orchestrator before considering a temporary worker. Token, cost, speed, or bounded scope never authorizes bypassing registered ownership.
 
 ## Select references by task
 

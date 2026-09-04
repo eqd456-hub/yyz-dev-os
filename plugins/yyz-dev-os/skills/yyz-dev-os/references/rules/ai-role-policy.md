@@ -28,12 +28,12 @@ Use these stable logical roles when multi-agent or long-lived module orchestrati
 - `STANDARD_REVIEWER`: perform ordinary read-only diff, maintainability, and test-gap review; this role does not satisfy a governed Independent Review gate by itself.
 - `CRITICAL_REVIEWER`: perform independent read-only review for architecture, permissions, security, data migration, cross-module risk, major refactoring, or another protected gate.
 
-The global registry defines roles, not project assignments. Store project-specific module names, responsibility paths, dependencies, task identities, and worktree bindings only in validated project Operating Rules or an equivalent Project Constitution. A project orchestrator may complete small direct work without creating a module hierarchy.
+The global registry defines roles, not project assignments. Store project-specific module names, responsibility paths, dependencies, task identities, and worktree bindings only in validated project Operating Rules or an equivalent Project Constitution. A project orchestrator may complete small direct project-level or unowned work without creating a module hierarchy, but must not treat module-owned work as direct merely because it is small.
 
 ## Agent coordination
 
 Give every worker one bounded objective, one writable worktree at most, authoritative input locations, prohibited scope, and expected evidence. Never allow multiple agents to write the same worktree concurrently. Parallelize only independent read-only work or isolated writable worktrees.
 
-For module-owned work, the worker reports to the module orchestrator, which must inspect the implementation and evidence before reporting an accepted module result to the project orchestrator. A project orchestrator's own read-only exploration, planning, risk, or review helper may report directly to the project orchestrator. Never forward a worker self-report unchanged as acceptance.
+For module-owned work, the project orchestrator routes the assignment to the registered module orchestrator. Any worker then reports to that module orchestrator, which must inspect the implementation and evidence before reporting an accepted module result to the project orchestrator. A project orchestrator's own read-only exploration, planning, risk, or review helper may report directly to the project orchestrator. Never forward a worker self-report unchanged as acceptance.
 
 When those governed stages apply, keep verification, independent review, user approval, and promotion under separately observable states even if one tool performs multiple mechanical steps.

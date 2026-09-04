@@ -36,6 +36,8 @@
     "maxDelegationDepth": 2,
     "projectOrchestratorTaskId": null,
     "modules": [],
+    "registeredModuleOwnershipRequiredForWrites": true,
+    "projectOrchestratorMayBypassRegisteredModuleForWrites": false,
     "oneActiveWriterPerWorktree": true,
     "oneActiveWriterPerResponsibility": true,
     "quietManagedTaskReporting": false

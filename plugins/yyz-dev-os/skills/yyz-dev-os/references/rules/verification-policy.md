@@ -30,6 +30,14 @@ When the current task matches the declared scope, apply only the configured requ
 
 Missing required evidence blocks only the gate that depends on that profile. Do not run every test category automatically, create an architecture record for ordinary local choices, update unaffected documentation or Project Brain files, or claim that an unconfigured project has opted into `high-assurance`.
 
+## Release-scope verification
+
+- For `A — frontend-only`, verify the frontend behavior, relevant static/build checks, visual or interaction states when applicable, and evidence that no backend/API contract changed. Do not require backend integration testing without an observed dependency.
+- For `B — frontend/backend coordinated`, verify the authoritative API contract plus relevant producer, consumer, compatibility, error-path, and end-to-end or integration behavior across the affected modules.
+- For `C — architecture-changing`, run the complete integration suite declared for the affected architecture boundaries, verify protected invariants and rollback conditions, and satisfy any required architecture decision, critical review, or promotion gate.
+
+Release-scope completeness means complete evidence for the affected boundary, not an automatic whole-repository test run. A failed or unavailable required check cannot be downgraded by relabeling the release scope.
+
 ## Evidence requirements
 
 Bind evidence to the candidate identity, command or procedure, environment, time, exit/result, and relevant output. Prefer deterministic and reproducible evidence. Treat mutable local artifacts as untrusted if the environment can modify them unexpectedly; do not bypass enterprise controls to recover trust.

@@ -1045,6 +1045,190 @@
           "require-independent-review"
         ]
       }
+    },
+    {
+      "id": "registered-module-owner-before-temporary-worker",
+      "prompt": "项目 Operating Rules 已注册长期用户端模块主控。现在有一个边界清楚的用户端 Bug；为了少用 Token，项目主控想直接创建临时 Terra 实施者。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/multi-agent-orchestration.md",
+          "references/rules/ai-role-policy.md",
+          "references/rules/routing-policy.md"
+        ],
+        "requiredActions": [
+          "resolve-registered-module-ownership-first",
+          "route-module-write-to-module-orchestrator"
+        ],
+        "forbiddenDefaultActions": [
+          "project-orchestrator-create-temporary-module-writer",
+          "use-token-cost-to-bypass-module-owner",
+          "write-module-scope-directly-from-project-orchestrator"
+        ]
+      }
+    },
+    {
+      "id": "module-orchestrator-selects-bounded-worker",
+      "prompt": "长期管理后台模块主控已接收本模块的局部 UI 修复，并确认当前工作树只有它拥有写入权。请选择合适执行方式。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/multi-agent-orchestration.md",
+          "references/rules/ai-role-policy.md",
+          "references/rules/routing-policy.md"
+        ],
+        "requiredActions": [
+          "keep-module-orchestrator-accountable",
+          "choose-direct-or-bounded-worker-within-module-authority",
+          "module-orchestrator-accept-result"
+        ],
+        "forbiddenDefaultActions": [
+          "return-unverified-worker-report-to-project-orchestrator",
+          "create-second-writer-in-same-worktree"
+        ]
+      }
+    },
+    {
+      "id": "registered-module-owner-unavailable",
+      "prompt": "项目规则已注册服务器模块主控，但当前无法调用它。项目主控准备立即让临时代理修改服务器模块以节省等待时间。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": true,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/multi-agent-orchestration.md",
+          "references/rules/ai-role-policy.md",
+          "references/rules/routing-policy.md"
+        ],
+        "requiredActions": [
+          "stop-before-module-write",
+          "require-explicit-reassignment-and-writer-transfer"
+        ],
+        "forbiddenDefaultActions": [
+          "silently-substitute-temporary-module-writer",
+          "treat-module-unavailability-as-token-routing-choice",
+          "guess-current-module-worktree"
+        ]
+      }
+    },
+    {
+      "id": "frontend-must-not-invent-api-contract",
+      "prompt": "新增一个前端功能，需要显示后端数据里的 modelLabel，但当前只看到了页面设计稿，尚未确认真实接口是否返回这个字段。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": true,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md"
+        ],
+        "requiredActions": [
+          "inspect-authoritative-api-contract",
+          "verify-real-route-fields-and-consumers",
+          "route-contract-gap-to-affected-module-owners"
+        ],
+        "forbiddenDefaultActions": [
+          "invent-frontend-api-field",
+          "mock-unconfirmed-contract-as-production-behavior",
+          "implement-cross-boundary-without-contract-evidence"
+        ]
+      }
+    },
+    {
+      "id": "backend-contract-change-coordinates-consumers",
+      "prompt": "后端准备把前端正在使用的 modelId 字段改名为 providerModelId。请完成这个接口调整。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/protocols/multi-agent-orchestration.md"
+        ],
+        "requiredActions": [
+          "identify-authoritative-api-contract-owner",
+          "coordinate-affected-frontend-and-backend-module-owners",
+          "choose-explicit-compatibility-or-version-strategy",
+          "verify-producer-and-consumer-behavior"
+        ],
+        "forbiddenDefaultActions": [
+          "silently-rename-backend-field",
+          "leave-frontend-consumer-unnotified",
+          "claim-api-change-complete-from-backend-test-only"
+        ]
+      }
+    },
+    {
+      "id": "release-scope-a-frontend-only",
+      "prompt": "这是一个纯前端样式和交互调整，真实接口、请求字段、响应字段和后端行为都不变，可以独立发布。请确定发布范围和验证。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/rules/verification-policy.md"
+        ],
+        "requiredActions": [
+          "classify-release-scope-a",
+          "prove-no-backend-contract-change",
+          "run-targeted-frontend-validation"
+        ],
+        "forbiddenDefaultActions": [
+          "require-backend-integration-without-dependency",
+          "upgrade-to-full-architecture-governance"
+        ]
+      }
+    },
+    {
+      "id": "release-scope-b-api-coordinated",
+      "prompt": "新功能需要前端提交新字段并由后端保存和返回。请确定发布范围和验证要求。",
+      "expected": {
+        "mode": "professional",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/rules/verification-policy.md"
+        ],
+        "requiredActions": [
+          "classify-release-scope-b",
+          "confirm-authoritative-api-contract",
+          "coordinate-producer-and-consumer-modules",
+          "verify-contract-compatibility-and-integration"
+        ],
+        "forbiddenDefaultActions": [
+          "release-frontend-against-unconfirmed-api",
+          "test-only-one-side-of-contract"
+        ]
+      }
+    },
+    {
+      "id": "release-scope-c-architecture-change",
+      "prompt": "这次发布会改变跨模块依赖方向、核心集成契约和长期数据边界。请确定发布范围并准备验证。",
+      "expected": {
+        "mode": "governed",
+        "mustPauseBeforeImplementation": false,
+        "requiresProtectedApproval": false,
+        "requiredReferences": [
+          "references/protocols/implementation.md",
+          "references/rules/verification-policy.md"
+        ],
+        "requiredActions": [
+          "classify-release-scope-c",
+          "record-durable-architecture-decision",
+          "run-complete-affected-boundary-integration-suite",
+          "verify-protected-invariants-and-rollback"
+        ],
+        "forbiddenDefaultActions": [
+          "downgrade-release-scope-to-avoid-required-tests",
+          "claim-complete-from-partial-integration-evidence",
+          "run-unrelated-whole-repository-tests-by-default"
+        ]
+      }
     }
   ]
 }

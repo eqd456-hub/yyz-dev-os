@@ -25,14 +25,14 @@ Keep the current preferred model mapping in this policy rather than embedding mo
 
 This table is a capability-informed default, not a permanent vendor binding. Override it when verified Global or Project Capability Ledger evidence, availability, or the current risk supports a better identity; preserve the logical role and its authority boundary.
 
-Before substantial execution, perform one brief routing check. For a bounded, independent stage, delegation is the default when it materially improves speed, context quality, quality assurance, or cost:
+Before substantial execution, perform one brief routing check. Resolve registered module ownership before selecting a temporary executor. For a bounded, independent stage within the responsible orchestrator's authority, delegation is the default when it materially improves speed, context quality, quality assurance, or cost:
 
 - Route search, code maps, call chains, logs, documentation, batch inspection, and read-only audit to `EXPLORER`.
 - Route bounded features, bug fixes, UI changes, interfaces, tests, and limited refactoring to `IMPLEMENTER`.
 - Route ordinary diff, missing-test, and maintainability review to `STANDARD_REVIEWER`.
 - Keep architecture, permissions, security, data migration, cross-module coordination, major refactoring, and difficult failures under `PROJECT_ORCHESTRATOR`; use `CRITICAL_REVIEWER` when independent critical review is required.
 
-When the orchestration interface supports explicit model or role selection, request the intended identity explicitly; do not assume an unlabeled worker uses the preferred model. The project orchestrator may keep a stage direct only when it is a trivial one-step action, cannot be separated safely, would create a same-worktree write conflict, lacks an available suitable executor, or costs more to delegate than to perform. The responsible orchestrator must inspect worker evidence before accepting a result. Never allow multiple agents to write the same worktree.
+When the orchestration interface supports explicit model or role selection, request the intended identity explicitly; do not assume an unlabeled worker uses the preferred model. The project orchestrator may keep a project-level or unowned stage direct only when it is a trivial one-step action, cannot be separated safely, would create a same-worktree write conflict, lacks an available suitable executor, or costs more to delegate than to perform. Those exceptions do not let it bypass a registered module owner for module-owned writes. The responsible orchestrator must inspect worker evidence before accepting a result. Never allow multiple agents to write the same worktree.
 
 ## Minimize total workflow tokens
 
