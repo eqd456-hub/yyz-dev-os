@@ -6,7 +6,7 @@ Represent each capability identity as `Tool + Model + Role`; add environment and
 
 Never bind a tool name permanently to Core, UI, review, or another role. Choose the executor from verified capability and the current task's requirements; change the routing when better project-specific evidence appears.
 
-Do not treat public rankings, vendor claims, or an AI's self-assessment as verified capability. If comparable evidence is absent, state `INSUFFICIENT_EVIDENCE`, use a bounded pilot, and measure the result.
+Do not treat public rankings, vendor claims, or an AI's self-assessment as verified capability. For an explicit capability evaluation, absent comparable evidence means `INSUFFICIENT_EVIDENCE`; use a bounded pilot only within the evaluation's authorized scope. Ordinary work uses the configured available executor without a capability investigation or savings claim.
 
 ## Preferred Codex orchestration profile
 
@@ -25,14 +25,16 @@ Keep the current preferred model mapping in this policy rather than embedding mo
 
 This table is a capability-informed default, not a permanent vendor binding. Override it when verified Global or Project Capability Ledger evidence, availability, or the current risk supports a better identity; preserve the logical role and its authority boundary.
 
-Before substantial execution, perform one brief routing check. Resolve registered module ownership before selecting a temporary executor. For a bounded, independent stage within the responsible orchestrator's authority, delegation is the default when it materially improves speed, context quality, quality assurance, or cost:
+Resolve registered module ownership before selecting a temporary executor. Small, bounded work defaults to direct execution by its responsible owner, including tasks with several steps. A known module assignment needs only a compact handoff; being registered does not force worker creation or full protocol loading. For substantial work, delegate a bounded stage only when avoided work, useful parallelism or risk isolation outweighs executor startup, repeated context and acceptance cost. Do not split a small fix into separate search, implementation, test and review agents merely to use the model mapping.
+
+When delegation is justified:
 
 - Route search, code maps, call chains, logs, documentation, batch inspection, and read-only audit to `EXPLORER`.
 - Route bounded features, bug fixes, UI changes, interfaces, tests, and limited refactoring to `IMPLEMENTER`.
 - Route ordinary diff, missing-test, and maintainability review to `STANDARD_REVIEWER`.
 - Keep architecture, permissions, security, data migration, cross-module coordination, major refactoring, and difficult failures under `PROJECT_ORCHESTRATOR`; use `CRITICAL_REVIEWER` when independent critical review is required.
 
-When the orchestration interface supports explicit model or role selection, request the intended identity explicitly; do not assume an unlabeled worker uses the preferred model. The project orchestrator may keep a project-level or unowned stage direct only when it is a trivial one-step action, cannot be separated safely, would create a same-worktree write conflict, lacks an available suitable executor, or costs more to delegate than to perform. Those exceptions do not let it bypass a registered module owner for module-owned writes. The responsible orchestrator must inspect worker evidence before accepting a result. Never allow multiple agents to write the same worktree.
+When the orchestration interface supports explicit model or role selection, request the intended identity explicitly; do not assume an unlabeled worker uses the preferred model. Direct execution and cost considerations do not let it bypass a registered module owner for module-owned writes. Choose a sufficient available model and reasoning effort for the actual task; the table is not a minimum reasoning level for every edit. The responsible orchestrator must inspect worker evidence before accepting a result. Never allow multiple agents to write the same worktree.
 
 ## Minimize total workflow tokens
 
@@ -50,7 +52,7 @@ The project orchestrator must validate the advice against real code, Git facts, 
 
 ## Make routing observable
 
-When a worker or planning advisor is used, include one compact `Routing` line in the final report with the actual model or agent identity, role, bounded objective, and acceptance result. If a stage was clearly eligible for delegation or consultation but remained direct, use that line to state the reason. Omit it for ordinary tasks where routing was not applicable; do not create user-owned tasks merely to make internal routing visible.
+When a worker or planning advisor is used, include one compact `Routing` line in the final report with the actual model or agent identity, role, bounded objective, and acceptance result. For direct work, omit it and do not generate an explanation for avoiding delegation. Do not create user-owned tasks merely to make internal routing visible.
 
 These are current preferred profiles, not permanent vendor bindings. Adjust them when verified capability evidence, current availability, or task risk requires a different executor.
 

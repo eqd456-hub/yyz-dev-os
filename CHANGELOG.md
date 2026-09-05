@@ -2,6 +2,16 @@
 
 All notable changes to YYZ Dev OS follow Semantic Versioning and the Keep a Changelog categories.
 
+## [2.8.2] - 2026-09-05
+
+### Fixed
+
+- Make small work direct under its responsible owner, including multi-step fixes and already registered modules; distinguish compact ownership handoff from full orchestration.
+- Narrow automatic Skill matching, shorten the entrypoint and stop reference loading for daily work. Preserve conditional security, data, Git, release, recovery and review safeguards.
+- Remove default capability pilots, repeated investigations, unused routing reports and mandatory daily report headings.
+- Diagnose relevant API and persistence paths before involving other owners; keep API Contract and release-scope gates tied to actual impact.
+- Correct daily routing cases that previously required workers, and reject unnecessary reference loading in observed-result validation. Package checks and scenario review do not measure production token savings.
+
 ## [2.8.1] - 2026-09-04
 
 ### Fixed

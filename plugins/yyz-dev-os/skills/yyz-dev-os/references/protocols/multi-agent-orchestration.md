@@ -1,6 +1,8 @@
 # Multi-Agent Orchestration Protocol
 
-Use this protocol only when a development task has a registered long-lived module owner, separates into useful independent stages, crosses module boundaries, benefits materially from context isolation or parallel read-only work, or needs risk separation. A small, clear task that the current lead can finish safely should stay direct.
+Use this protocol for useful multi-agent execution, cross-owner contract/dependency coordination, reassignment, or ownership/writer conflict. A registered long-lived owner alone is a routing fact, not a requirement to load this protocol. A small, bounded task stays direct under its responsible owner even when it has several steps.
+
+For an already validated module assignment with no changed ownership or conflict, the project lead sends only the requirement delta, scope and evidence locations once; the module lead diagnoses, fixes and verifies directly. Its result is checked once by the project lead against the diff and evidence. Do not automatically recreate a worker layer, execution card, full role registry review or integration release gate. Multiple symptoms do not justify contacting every module; inspect the relevant call chain before involving additional owners. If evidence reveals a cross-owner contract change or protected risk, use the applicable full assignment and verification rules below.
 
 ## Logical hierarchy and depth
 
@@ -50,7 +52,7 @@ Every worker returns a compact evidence-bearing result containing:
 - risks and unresolved items;
 - whether another module is affected.
 
-A module orchestrator must re-read the relevant code and evidence, inspect the diff, run or verify required tests, and accept, repair, or reject the result. It reports only its own checked conclusion to the project orchestrator. The project orchestrator verifies module boundaries, dependencies, integration evidence, and the final candidate before closing the project-level task. Worker completion is never automatic acceptance.
+A module orchestrator must inspect the changed code, diff and relevant evidence, run or verify required tests, and accept, repair, or reject the result. It reports only its own checked conclusion to the project orchestrator. The project orchestrator checks ownership, requested outcomes and evidence, adding dependency/integration/candidate checks only when affected. Reuse already inspected unchanged evidence; rerun tests only for a new change, failure, stale evidence or an unresolved acceptance gap. Worker completion is never automatic acceptance.
 
 ## Fail closed and recovery
 
@@ -58,4 +60,4 @@ When orchestration is active, stop with `BLOCKED` rather than guessing if a requ
 
 For a long-lived module handoff, use the existing Project Handoff and Recovery protocols. Transfer writer ownership only after recording the exact module, task, worktree, Git state, unfinished work, evidence, and next action, and after the successor has recovered successfully.
 
-Use [AI Role Policy](../rules/ai-role-policy.md) for role authority, [Routing Policy](../rules/routing-policy.md) for model selection, [Verification Policy](../rules/verification-policy.md) for evidence, [Independent Review](independent-review.md) for governed review, [Git Policy](../rules/git-policy.md) for worktree and promotion safety, and [Reporting Policy](../rules/reporting-policy.md) for user-visible communication.
+These are conditional references, not a mandatory reading bundle. Use [AI Role Policy](../rules/ai-role-policy.md) for role authority, [Routing Policy](../rules/routing-policy.md) for model selection, [Verification Policy](../rules/verification-policy.md) for evidence, [Independent Review](independent-review.md) for governed review, [Git Policy](../rules/git-policy.md) for worktree and promotion safety, and [Reporting Policy](../rules/reporting-policy.md) for user-visible communication.

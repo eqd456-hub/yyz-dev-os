@@ -2,14 +2,14 @@
 
 ## Default daily report
 
-For code changes, report briefly with:
+For daily work, use a few lines covering the result, necessary checks and material remaining risk. Changes / Architecture / Validation / Risks are content dimensions, not mandatory headings or separate paragraphs. Omit empty structure/risk boilerplate. For larger work, organize as useful with:
 
 - Changes: the user-visible effect first, then files changed and why.
 - Architecture: whether the existing structure is affected.
 - Validation: checks run and their result.
 - Risks: remaining potential risks.
 
-If there is no structural impact or known risk, say so briefly. Include root cause, business-rule ownership, reuse/duplicate prevention, dependency choice, or extensibility only when it materially helps the user understand the outcome; do not turn daily reports into a fixed long checklist.
+Include root cause, business-rule ownership, reuse/duplicate prevention, dependency choice, or extensibility only when it materially helps the user understand the outcome; do not turn daily reports into a fixed long checklist.
 
 ## Low-noise execution updates
 

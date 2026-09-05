@@ -64,8 +64,8 @@ def validate_suite(path: Path = DEFAULT_SUITE) -> tuple[list[str], dict[str, int
         for key in ("mustPauseBeforeImplementation", "requiresProtectedApproval"):
             if not isinstance(expected.get(key), bool):
                 failures.append(f"{label}.expected.{key} must be boolean")
-        for key in ("requiredReferences", "requiredActions", "forbiddenDefaultActions"):
-            values = expected.get(key, []) if key == "requiredActions" else expected.get(key)
+        for key in ("requiredReferences", "requiredActions", "forbiddenDefaultActions", "forbiddenReferences"):
+            values = expected.get(key, []) if key in ("requiredActions", "forbiddenReferences") else expected.get(key)
             if not isinstance(values, list) or any(
                 not isinstance(value, str) or not value.strip() for value in values
             ):
@@ -138,6 +138,9 @@ def validate_results(suite_path: Path, results_path: Path) -> list[str]:
         missing = sorted(set(expected["requiredReferences"]) - loaded)
         if missing:
             failures.append(f"{case_id}: missing required references: {', '.join(missing)}")
+        forbidden_references = sorted(set(expected.get("forbiddenReferences", [])) & loaded)
+        if forbidden_references:
+            failures.append(f"{case_id}: loaded forbidden references: {', '.join(forbidden_references)}")
         performed_values = observed.get("performedActions")
         if not isinstance(performed_values, list) or any(
             not isinstance(value, str) or not value.strip() for value in performed_values

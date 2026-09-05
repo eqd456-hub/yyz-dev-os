@@ -92,6 +92,18 @@ class ObservedResultsValidationTests(unittest.TestCase):
             any("missing required actions" in failure for failure in failures)
         )
 
+    def test_unnecessary_reference_loading_fails(self) -> None:
+        results = self.results()
+        case = next(item for item in results["results"] if item["id"] == "daily-explicit-yyz-style-fix")
+        case["observed"]["loadedReferences"].append("references/protocols/multi-agent-orchestration.md")
+        self.assertTrue(any("loaded forbidden references" in failure for failure in self.validate(results)))
+
+    def test_unnecessary_worker_fails(self) -> None:
+        results = self.results()
+        case = next(item for item in results["results"] if item["id"] == "routing-scoped-implementation")
+        case["observed"]["performedActions"].append("spawn-unnecessary-worker")
+        self.assertTrue(any("performed forbidden actions" in failure for failure in self.validate(results)))
+
 
 if __name__ == "__main__":
     unittest.main()
